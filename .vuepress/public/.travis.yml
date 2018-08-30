@@ -1,0 +1,5 @@
+
+language: ruby
+
+script:
+ - exit 0

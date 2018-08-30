@@ -1,0 +1,11 @@
+{
+  "name": "addendum-notes",
+  "version": "1.0.0",
+  "description": "Extra ad-hoc and Addendum notes for the course",
+  "main": "index.html",
+  "author": "Dan Gilleland",
+  "license": "NONE",
+  "devDependencies": {
+    "vuepress": "^0.14.2"
+  }
+}
