@@ -1,4 +1,4 @@
-# 2018-Sep-In-Class
+# 2018-Sep-In-Class [![Build Status - Master Branch](https://travis-ci.org/dgilleland/2018-Sep-In-Class.svg?branch=master)](https://travis-ci.org/dgilleland/2018-Sep-In-Class)
 
 **Welcome!** You've reached the code-repository for my in-class examples for **Jan, 2018**.
 
