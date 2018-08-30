@@ -1,6 +1,7 @@
 module.exports = {
     title: '2018 Sep',
     description: 'In-Class Demos and Supporting Notes',
+
     markdown: {
         config: md => {
             md.set({ breaks: true })
@@ -16,6 +17,7 @@ module.exports = {
             md.use(require('markdown-it-sup'))
         }
     },
+    base: '/2018-Sep-In-Class/',
     themeConfig: {
         // Assumes GitHub. Can also be a full GitLab url.
         repo: 'dgilleland/2018-Sep-In-Class',
