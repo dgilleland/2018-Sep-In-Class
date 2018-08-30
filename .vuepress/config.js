@@ -33,8 +33,8 @@ module.exports = {
         nav: [
             { text: 'Home', link: '/' },
             { text: 'Teaching Schedule', link: 'https://dgilleland.github.io/new/' },
-            { text: 'DMIT-1508 errata', link: '1508/' },
-            { text: 'DMIT-2018 errata', link: '2018/' },
+            { text: 'DMIT-1508 errata', link: '/1508/' },
+            { text: 'DMIT-2018 errata', link: '/2018/' },
         ]
     }
 };
