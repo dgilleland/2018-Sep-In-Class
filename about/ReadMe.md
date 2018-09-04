@@ -6,3 +6,5 @@ Go to the appropriate branch, depending on your section:
 
 - [**DMIT 1508** Database Fundamentals **A01**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-1508-A01)
 - **DMIT 2018** Intermediate Application Development [**A01**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018-A01) and [**A02**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018-A02)
+
+[![Hazard Symbol](https://imgs.xkcd.com/comics/hazard_symbol.png)](https://xkcd.com/2038/)
