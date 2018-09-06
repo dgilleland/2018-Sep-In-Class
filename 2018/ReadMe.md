@@ -7,4 +7,5 @@ title: DMIT 2018 - Intermediate App Dev - Errata
 
 ## Ad-Hoc Code Repositories
 
-- [**Temporary Demo**](https://github.com/dgilleland/TemporaryDemo) - An ad-hoc database to practice some git/GitHub commits and to refresh some Entity Framework work from last semester.
+- ***A01*** [**Temporary Demo**](https://github.com/dgilleland/TemporaryDemo) - An ad-hoc database to practice some git/GitHub commits and to refresh some Entity Framework work from last semester.
+- ***A02*** [**TempDemo**](https://github.com/dgilleland/TempDemo) - An ad-hoc database to practice some git/GitHub commits and to refresh some Entity Framework work from last semester.
