@@ -28,11 +28,11 @@ namespace NorthwindTraders.Entities
         public string HomePhone { get; set; }
         public string Extension { get; set; }
         public byte[] Photo { get; set; }
-        public string PhotoMimeType { get; set; } // Other version of database....
+        public string PhotoMimeType { get; set; }
         public string Notes { get; set; }
         public int? ReportsTo { get; set; }
         public string PhotoPath { get; set; }
-        //public DateTime LastModified { get; set; } // Other version of database....
+        public DateTime LastModified { get; set; }
         #endregion
 
         #region Navigation Properties
@@ -58,10 +58,11 @@ namespace NorthwindTraders.Entities
         }
         #endregion
 
-        // TODO: Non-mapped properties
-        // FullName -> First Last
+        #region Not-Mapped Properties
+        [NotMapped] // FullName -> First Last
         public string FullName { get { return $"{FirstName} {LastName}"; } }
-        // FormalName -> Last, First
+        [NotMapped] // FormalName -> Last, First
         public string FormalName { get { return $"{LastName}, {FirstName}"; } }
+        #endregion
     }
 }

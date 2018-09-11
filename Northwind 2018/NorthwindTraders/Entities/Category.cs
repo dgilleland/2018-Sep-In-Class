@@ -14,6 +14,7 @@ namespace NorthwindTraders.Entities
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public byte[] Picture { get; set; }
+        public string PictureMimeType { get; set; }
         #endregion
 
         #region Navigation Properties
