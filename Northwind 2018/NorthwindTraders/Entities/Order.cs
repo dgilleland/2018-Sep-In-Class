@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NorthwindTraders.Entities
 {
@@ -12,8 +9,10 @@ namespace NorthwindTraders.Entities
     public class Order
     {
         #region Column Mappings
+
         [Key]
         public int OrderID { get; set; }
+
         public string CustomerID { get; set; }
         public int? EmployeeID { get; set; }
         public DateTime? OrderDate { get; set; }
@@ -28,16 +27,20 @@ namespace NorthwindTraders.Entities
         public string ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
         public DateTime LastModified { get; set; }
-        #endregion
+
+        #endregion Column Mappings
 
         #region Navigational Properties
+
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
             = new HashSet<OrderDetail>();
 
         [ForeignKey("ShipVia")] // Tell EF which property to use as Foreign Key data
         public virtual Shipper Shipper { get; set; }
+
         public virtual Customer Customer { get; set; }
         public virtual Employee Employee { get; set; }
-        #endregion
+
+        #endregion Navigational Properties
     }
 }

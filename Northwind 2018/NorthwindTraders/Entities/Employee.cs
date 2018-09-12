@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NorthwindTraders.Entities
 {
@@ -12,8 +9,10 @@ namespace NorthwindTraders.Entities
     public class Employee
     {
         #region Column Mappings
+
         [Key]
         public int EmployeeID { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Title { get; set; }
@@ -33,22 +32,28 @@ namespace NorthwindTraders.Entities
         public int? ReportsTo { get; set; }
         public string PhotoPath { get; set; }
         public DateTime LastModified { get; set; }
-        #endregion
+
+        #endregion Column Mappings
 
         #region Navigation Properties
+
         // DEMO: Foreign Key for Self-Referencing Relationships
         [ForeignKey("ReportsTo")]
         public virtual Employee Manager { get; set; }
+
         public ICollection<Employee> Subbordinates { get; set; }
             = new HashSet<Employee>();
 
         // DEMO: Many-to-Many Relationships
         public virtual ICollection<Territory> Territories { get; set; }
+
         public virtual ICollection<Order> Orders { get; set; }
             = new HashSet<Order>(); // This could have been set up in the constructor
-        #endregion
+
+        #endregion Navigation Properties
 
         #region Constructors
+
         public Employee()
         {
             // DEMO: Good practice for Entity Constructors
@@ -56,13 +61,17 @@ namespace NorthwindTraders.Entities
             // initialize it to an empty hash-set.
             Territories = new HashSet<Territory>();
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Not-Mapped Properties
+
         [NotMapped] // FullName -> First Last
         public string FullName { get { return $"{FirstName} {LastName}"; } }
+
         [NotMapped] // FormalName -> Last, First
         public string FormalName { get { return $"{LastName}, {FirstName}"; } }
-        #endregion
+
+        #endregion Not-Mapped Properties
     }
 }

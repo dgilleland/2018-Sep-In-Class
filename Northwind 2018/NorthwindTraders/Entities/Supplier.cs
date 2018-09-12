@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NorthwindTraders.Entities
 {
@@ -12,8 +9,10 @@ namespace NorthwindTraders.Entities
     public class Supplier
     {
         #region Column Mappings
+
         [Key]
         public int SupplierID { get; set; }
+
         public string CompanyName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
@@ -27,11 +26,14 @@ namespace NorthwindTraders.Entities
         public string HomePageTitle { get; set; }
         public string HomePageUrl { get; set; }
         public DateTime LastModified { get; set; }
-        #endregion
+
+        #endregion Column Mappings
 
         #region Navigation Properties
+
         public virtual ICollection<Product> Products { get; set; }
             = new HashSet<Product>();
-        #endregion
+
+        #endregion Navigation Properties
     }
 }
