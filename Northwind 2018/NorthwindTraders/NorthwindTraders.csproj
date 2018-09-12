@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\CRUD\RegionController.cs" />
+    <Compile Include="BLL\CRUD\ShipperController.cs" />
+    <Compile Include="BLL\CRUD\TerritoryController.cs" />
     <Compile Include="DAL\NorthwindContext.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Customer.cs" />
