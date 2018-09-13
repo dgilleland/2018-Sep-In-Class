@@ -15,7 +15,10 @@ namespace NorthwindTraders.BLL.CRUD
         {
             using (var context = new NorthwindContext())
             {
-                return context.Regions.ToList();
+                return context
+                    .Regions
+                    .Include(nameof(Region.Territories))
+                    .ToList();
             }
         }
 

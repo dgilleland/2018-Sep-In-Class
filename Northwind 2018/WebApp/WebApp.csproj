@@ -169,6 +169,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Admin\CRUD\EditSalesAreas.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -189,6 +190,16 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Images\Northwind Traders - ERD - 2018.png" />
+    <Content Include="Images\Northwind Traders - Purchasing.png" />
+    <Content Include="Images\Northwind Traders - Sales.png" />
+    <Content Include="Images\Northwind Traders - Staffing.png" />
+    <Content Include="Images\NorthwindLogo.png" />
+    <Content Include="Images\NorthwindLogoLarge.png" />
+    <Content Include="Images\NorthwindLogoLargeTransparent.png" />
+    <Content Include="Images\NorthwindLogoNoTextLargeTransparent.png" />
+    <Content Include="Images\NorthwindMenuLogo.gif" />
+    <Content Include="Images\NorthwindMenuLogoSmall.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -218,6 +229,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="UserControls\MessageUserControl.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -329,6 +341,13 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CRUD\EditSalesAreas.aspx.cs">
+      <DependentUpon>EditSalesAreas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CRUD\EditSalesAreas.aspx.designer.cs">
+      <DependentUpon>EditSalesAreas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -374,6 +393,14 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserControls\MessageUserControl.ascx.cs">
+      <DependentUpon>MessageUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MessageUserControl.ascx.designer.cs">
+      <DependentUpon>MessageUserControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ProcessRequest.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -395,6 +422,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NorthwindTraders\NorthwindTraders.csproj">
+      <Project>{0e57438d-6e17-4777-bdb5-198c08167b4a}</Project>
+      <Name>NorthwindTraders</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
