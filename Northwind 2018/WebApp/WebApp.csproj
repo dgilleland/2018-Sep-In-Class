@@ -170,6 +170,10 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Admin\CRUD\EditSalesAreas.aspx" />
+    <Content Include="Admin\CRUD\EditShippers.aspx" />
+    <Content Include="Admin\FireStaff.aspx" />
+    <Content Include="Admin\HireStaff.aspx" />
+    <Content Include="Admin\Staffing.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -347,6 +351,34 @@
     </Compile>
     <Compile Include="Admin\CRUD\EditSalesAreas.aspx.designer.cs">
       <DependentUpon>EditSalesAreas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CRUD\EditShippers.aspx.cs">
+      <DependentUpon>EditShippers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CRUD\EditShippers.aspx.designer.cs">
+      <DependentUpon>EditShippers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FireStaff.aspx.cs">
+      <DependentUpon>FireStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FireStaff.aspx.designer.cs">
+      <DependentUpon>FireStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\HireStaff.aspx.cs">
+      <DependentUpon>HireStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\HireStaff.aspx.designer.cs">
+      <DependentUpon>HireStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Staffing.aspx.cs">
+      <DependentUpon>Staffing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Staffing.aspx.designer.cs">
+      <DependentUpon>Staffing.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

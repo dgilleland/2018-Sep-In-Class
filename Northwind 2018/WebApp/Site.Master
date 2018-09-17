@@ -55,6 +55,8 @@
                         <li id="StaffOnly" runat="server">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li><a runat="server" href="~/Admin/Staffing.aspx">Staffing</a></li>
+                                <li><a runat="server" href="~/Admin/HireStaff.aspx">Hire Staff</a></li>
                                 <li><a runat="server" href="~/Admin/CRUD/EditSalesAreas.aspx">Sales Areas</a></li>
                             </ul>
                         </li>
