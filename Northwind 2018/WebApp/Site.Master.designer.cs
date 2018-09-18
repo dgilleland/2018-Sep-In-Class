@@ -13,6 +13,24 @@ namespace WebApp {
     public partial class SiteMaster {
         
         /// <summary>
+        /// Logo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Logo;
+        
+        /// <summary>
+        /// StaffOnly control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl StaffOnly;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

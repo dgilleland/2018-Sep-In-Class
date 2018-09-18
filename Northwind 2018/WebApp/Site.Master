@@ -58,6 +58,7 @@
                                 <li><a runat="server" href="~/Admin/Staffing.aspx">Staffing</a></li>
                                 <li><a runat="server" href="~/Admin/HireStaff.aspx">Hire Staff</a></li>
                                 <li><a runat="server" href="~/Admin/CRUD/EditSalesAreas.aspx">Sales Areas</a></li>
+                                <li><a runat="server" href="~/Admin/CRUD/EditShippers.aspx">Shippers</a></li>
                             </ul>
                         </li>
                     </ul>

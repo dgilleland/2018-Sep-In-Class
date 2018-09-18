@@ -15,7 +15,7 @@ namespace NorthwindTraders.BLL.CRUD
         {
             using (var context = new NorthwindContext())
             {
-                return context.Shippers.ToList();
+                return context.Shippers.Include(nameof(Shipper.Orders)).ToList();
             }
         }
 

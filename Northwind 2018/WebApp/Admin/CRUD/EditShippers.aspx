@@ -13,7 +13,8 @@
         <div class="col-md-8">
             <h2>Shippers for Northwind Traders</h2>
             <asp:ListView ID="ShippersListView" runat="server" DataKeyNames="ShipperID"
-                 DataSourceID="ShippersDataSource" InsertItemPosition="LastItem">
+                 DataSourceID="ShippersDataSource" InsertItemPosition="LastItem"
+                 ItemType="NorthwindTraders.Entities.Shipper">
                 <EditItemTemplate>
                     <tr style="">
                         <td>
@@ -21,11 +22,11 @@
                             <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# Bind("ShipperID") %>' runat="server" ID="ShipperIDTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.ShipperID %>' runat="server" ID="ShipperIDTextBox" /></td>
                         <td>
-                            <asp:TextBox Text='<%# Bind("CompanyName") %>' runat="server" ID="CompanyNameTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.CompanyName %>' runat="server" ID="CompanyNameTextBox" /></td>
                         <td>
-                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.Phone %>' runat="server" ID="PhoneTextBox" /></td>
                     </tr>
                 </EditItemTemplate>
                 <EmptyDataTemplate>
@@ -42,11 +43,11 @@
                             <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# Bind("ShipperID") %>' runat="server" ID="ShipperIDTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.ShipperID %>' runat="server" ID="ShipperIDTextBox" /></td>
                         <td>
-                            <asp:TextBox Text='<%# Bind("CompanyName") %>' runat="server" ID="CompanyNameTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.CompanyName %>' runat="server" ID="CompanyNameTextBox" /></td>
                         <td>
-                            <asp:TextBox Text='<%# Bind("Phone") %>' runat="server" ID="PhoneTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.Phone %>' runat="server" ID="PhoneTextBox" /></td>
                     </tr>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -57,11 +58,11 @@
                             <asp:Button runat="server" CommandName="Select" Text="!" ID="SelectButton" />
                         </td>
                         <td>
-                            <asp:Label Text='<%# Eval("ShipperID") %>' runat="server" ID="ShipperIDLabel" /></td>
+                            <asp:Label Text='<%# Item.ShipperID %>' runat="server" ID="ShipperIDLabel" /></td>
                         <td>
-                            <asp:Label Text='<%# Eval("CompanyName") %>' runat="server" ID="CompanyNameLabel" /></td>
+                            <asp:Label Text='<%# Item.CompanyName %>' runat="server" ID="CompanyNameLabel" /></td>
                         <td>
-                            <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
+                            <asp:Label Text='<%# Item.Phone %>' runat="server" ID="PhoneLabel" /></td>
                     </tr>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -97,11 +98,15 @@
                             <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                         </td>
                         <td>
-                            <asp:Label Text='<%# Eval("ShipperID") %>' runat="server" ID="ShipperIDLabel" /></td>
+                            <asp:Label Text='<%# Item.ShipperID %>' runat="server" ID="ShipperIDLabel" /></td>
                         <td>
-                            <asp:Label Text='<%# Eval("CompanyName") %>' runat="server" ID="CompanyNameLabel" /></td>
+                            <asp:Label Text='<%# Item.CompanyName %>' runat="server" ID="CompanyNameLabel" /></td>
                         <td>
-                            <asp:Label Text='<%# Eval("Phone") %>' runat="server" ID="PhoneLabel" /></td>
+                            <asp:Label Text='<%# Item.Phone %>' runat="server" ID="PhoneLabel" /></td>
+                    </tr>
+                    <tr style="background-color:yellow;">
+                        <td colspan="2"></td>
+                        <td colspan="2"><i><b><%# Item.Orders.Count %></b> orders shipped via <%# Item.CompanyName %></i></td>
                     </tr>
                 </SelectedItemTemplate>
             </asp:ListView>
