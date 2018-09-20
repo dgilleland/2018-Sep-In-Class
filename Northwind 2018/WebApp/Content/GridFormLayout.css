@@ -31,7 +31,8 @@
     .grid-form input[type=datetime],
     .grid-form input[type=time],
     .grid-form input[type=password],
-    .grid-form textarea {
+    .grid-form textarea,
+    .grid-form select {
         grid-column: 2 / 4;
     }
 
