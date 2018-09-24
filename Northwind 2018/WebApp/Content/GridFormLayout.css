@@ -1,0 +1,49 @@
+﻿.grid-form {
+    display: grid;
+    grid-template-columns: auto 20px auto auto;
+    grid-row-gap: 7px;
+}
+
+    .grid-form fieldset {
+        display: contents;
+        grid-column: 2 / 4;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+        .grid-form fieldset > legend {
+            grid-column: 2 / 4;
+        }
+
+    .grid-form label {
+        grid-column: 1;
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    .grid-form input[type=text],
+    .grid-form input[type=email],
+    .grid-form input[type=url],
+    .grid-form input[type=tel],
+    .grid-form input[type=file],
+    .grid-form input[type=date],
+    .grid-form input[type=datetime],
+    .grid-form input[type=time],
+    .grid-form input[type=password],
+    .grid-form textarea,
+    .grid-form select {
+        grid-column: 2 / 4;
+    }
+
+    .grid-form input[type=checkbox] {
+        grid-column: 2;
+    }
+    .grid-form input[type=checkbox] + label {
+        grid-column: 3 / 4;
+        text-align: left;
+    }
+
+    .grid-form > div {
+        grid-column: 2 / 4;
+    }
