@@ -1,11 +1,25 @@
-<Query Kind="Expression" />
+<Query Kind="Expression">
+  <Connection>
+    <ID>950e92a1-69a5-4196-87e5-6a1c87c3f8d0</ID>
+    <Persist>true</Persist>
+    <Server>.</Server>
+    <Database>Northwind_DMIT2018</Database>
+  </Connection>
+</Query>
 
-/*
-Practice:
-
-1) List all the Customer Names for those with more than 5 orders.
+/* More Practice
+// Selecting and Anonymous Types
 2) Give me a list of all the Region names (i.e.: RegionDescription).
 3) Give me a list of all the Territory names.
 4) List all the regions and the number of territories in each region.
-5) List all the Region and Territory names as an "object graph" - use a nested query
+5) List all the Region and Territory names as an "object graph" 
+   - use a nested query
+
+// Where Clause
+1) List all the Customer Names for those with more than 5 orders.
+6) List the company names of all Suppliers in North America (Canada, USA, Mexico)
+7) 
+
+// Grouping
+x) List all the Suppliers, by Country
 */

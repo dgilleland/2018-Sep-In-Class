@@ -1,28 +1,29 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace NorthwindTraders.Entities
 {
-    [Table("Shippers")]
-    public class Shipper
-    {
-        #region Column Mappings
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-        // TODO: Add validation annotations for CompanyName and Phone
-        [Key]
+    public partial class Shipper
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Shipper()
+        {
+            Orders = new HashSet<Order>();
+        }
+
         public int ShipperID { get; set; }
 
+        [Required]
+        [StringLength(40)]
         public string CompanyName { get; set; }
+
+        [StringLength(24)]
         public string Phone { get; set; }
 
-        #endregion Column Mappings
-
-        #region Navigational Properties
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-            = new HashSet<Order>();
-
-        #endregion Navigational Properties
     }
 }

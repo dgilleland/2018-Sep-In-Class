@@ -1,77 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace NorthwindTraders.Entities
 {
-    [Table("Employees")]
-    public class Employee
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Employee
     {
-        #region Column Mappings
-
-        [Key]
-        public int EmployeeID { get; set; }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Title { get; set; }
-        public string TitleOfCourtesy { get; set; }
-        public DateTime? BirthDate { get; set; }
-        public DateTime? HireDate { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string Region { get; set; }
-        public string PostalCode { get; set; }
-        public string Country { get; set; }
-        public string HomePhone { get; set; }
-        public string Extension { get; set; }
-        public byte[] Photo { get; set; }
-        public string PhotoMimeType { get; set; }
-        public string Notes { get; set; }
-        public int? ReportsTo { get; set; }
-        public string PhotoPath { get; set; }
-        public DateTime LastModified { get; set; }
-
-        #endregion Column Mappings
-
-        #region Navigation Properties
-
-        // DEMO: Foreign Key for Self-Referencing Relationships
-        [ForeignKey("ReportsTo")]
-        public virtual Employee Manager { get; set; }
-
-        public ICollection<Employee> Subbordinates { get; set; }
-            = new HashSet<Employee>();
-
-        // DEMO: Many-to-Many Relationships
-        public virtual ICollection<Territory> Territories { get; set; }
-
-        public virtual ICollection<Order> Orders { get; set; }
-            = new HashSet<Order>(); // This could have been set up in the constructor
-
-        #endregion Navigation Properties
-
-        #region Constructors
-
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
-            // DEMO: Good practice for Entity Constructors
-            // For each navigational property that is a collection,
-            // initialize it to an empty hash-set.
+            Employees1 = new HashSet<Employee>();
+            Orders = new HashSet<Order>();
             Territories = new HashSet<Territory>();
         }
 
-        #endregion Constructors
+        public int EmployeeID { get; set; }
 
-        #region Not-Mapped Properties
+        [Required]
+        [StringLength(20)]
+        public string LastName { get; set; }
 
-        [NotMapped] // FullName -> First Last
-        public string FullName { get { return $"{FirstName} {LastName}"; } }
+        [Required]
+        [StringLength(10)]
+        public string FirstName { get; set; }
 
-        [NotMapped] // FormalName -> Last, First
-        public string FormalName { get { return $"{LastName}, {FirstName}"; } }
+        [StringLength(30)]
+        public string Title { get; set; }
 
-        #endregion Not-Mapped Properties
+        [StringLength(25)]
+        public string TitleOfCourtesy { get; set; }
+
+        public DateTime? BirthDate { get; set; }
+
+        public DateTime? HireDate { get; set; }
+
+        [StringLength(60)]
+        public string Address { get; set; }
+
+        [StringLength(15)]
+        public string City { get; set; }
+
+        [StringLength(15)]
+        public string Region { get; set; }
+
+        [StringLength(10)]
+        public string PostalCode { get; set; }
+
+        [StringLength(15)]
+        public string Country { get; set; }
+
+        [StringLength(24)]
+        public string HomePhone { get; set; }
+
+        [StringLength(4)]
+        public string Extension { get; set; }
+
+        public byte[] Photo { get; set; }
+
+        [StringLength(40)]
+        public string PhotoMimeType { get; set; }
+
+        [Column(TypeName = "ntext")]
+        public string Notes { get; set; }
+
+        public int? ReportsTo { get; set; }
+
+        [StringLength(255)]
+        public string PhotoPath { get; set; }
+
+        public DateTime LastModified { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees1 { get; set; }
+
+        public virtual Employee Employee1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Territory> Territories { get; set; }
     }
 }
