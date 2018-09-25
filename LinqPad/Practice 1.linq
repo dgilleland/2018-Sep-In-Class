@@ -12,13 +12,14 @@
 2) Give me a list of all the Region names (i.e.: RegionDescription).
 3) Give me a list of all the Territory names.
 4) List all the regions and the number of territories in each region.
-5) List all the Region and Territory names as an "object graph" 
+5) List all the shippers and the number of orders they have shipped.
+6) List all the Region and Territory names as an "object graph" 
    - use a nested query
 
 // Where Clause
-1) List all the Customer Names for those with more than 5 orders.
-6) List the company names of all Suppliers in North America (Canada, USA, Mexico)
-7) 
+7) List all the Customer Names for those with more than 5 orders.
+8) List the company names of all Suppliers in North America (Canada, USA, Mexico)
+9) 
 
 // Grouping
 x) List all the Suppliers, by Country
