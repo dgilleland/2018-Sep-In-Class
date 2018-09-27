@@ -10,10 +10,10 @@
 /* Northwind 2018 - Demo
    - List all the customers and categorize them by the volume of sales to those customers.
      Sales Volume  |  Category
-	 ------------- | ---------
-	               | Low
-				   | Moderate
-				   | High
+	   ------------- | ---------
+	                 | Low
+			  	         | Moderate
+				           | High
 				   
 */
 from data in Customers
