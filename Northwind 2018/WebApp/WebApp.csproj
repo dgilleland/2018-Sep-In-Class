@@ -170,6 +170,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Admin\CRUD\EditInventory.aspx" />
     <Content Include="Admin\CRUD\EditSalesAreas.aspx" />
     <Content Include="Admin\CRUD\EditShippers.aspx" />
     <Content Include="Admin\FireStaff.aspx" />
@@ -188,6 +189,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
+    <Content Include="Help\Default.aspx" />
+    <Content Include="Help\Troubleshooting.aspx" />
     <Content Include="Images\Northwind Traders - ERD - 2018.png" />
     <Content Include="Images\Northwind Traders - Purchasing.png" />
     <Content Include="Images\Northwind Traders - Sales.png" />
@@ -198,6 +201,9 @@
     <Content Include="Images\NorthwindLogoNoTextLargeTransparent.png" />
     <Content Include="Images\NorthwindMenuLogo.gif" />
     <Content Include="Images\NorthwindMenuLogoSmall.gif" />
+    <Content Include="Images\roslyn-error-net462.png" />
+    <Content Include="ProductCatalog.aspx" />
+    <Content Include="Sales\CustomerOrderForm.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\bootwrap-freecode.js" />
@@ -348,6 +354,13 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\CRUD\EditInventory.aspx.cs">
+      <DependentUpon>EditInventory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CRUD\EditInventory.aspx.designer.cs">
+      <DependentUpon>EditInventory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\CRUD\EditSalesAreas.aspx.cs">
       <DependentUpon>EditSalesAreas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -411,8 +424,36 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Help\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Troubleshooting.aspx.cs">
+      <DependentUpon>Troubleshooting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Troubleshooting.aspx.designer.cs">
+      <DependentUpon>Troubleshooting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ProductCatalog.aspx.cs">
+      <DependentUpon>ProductCatalog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductCatalog.aspx.designer.cs">
+      <DependentUpon>ProductCatalog.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sales\CustomerOrderForm.aspx.cs">
+      <DependentUpon>CustomerOrderForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sales\CustomerOrderForm.aspx.designer.cs">
+      <DependentUpon>CustomerOrderForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

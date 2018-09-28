@@ -10,6 +10,33 @@
 
     <div class="row">
         <div class="col-md-4">
+            <h2>Purchasing</h2>
+            <p>The Staffing subsystem is managed by:</p>
+            <ul>
+                <li><b>Steven Buchanan</b> - Sales Manager</li>
+                <li><b>Laura Callahan</b> - Inside Sales Coordinator</li>
+            </ul>
+            <img src="Images/Northwind%20Traders%20-%20Purchasing.png" class="img-responsive img-thumbnail" />
+        </div>
+        <div class="col-md-4">
+            <h2>Sales</h2>
+            <p>At Northwind Traders, our customers are small to medium sized companies who purchase our products either for resale or for use in their eating establishments. Northwind is still a little "old school". Customers don't order products directly online; rather, they phone or fax in orders to our sales team. Each order is managed by a <i>Sales Representative</i>.</p>
+            <p>The Sales subsystem can be managed by all the employees of the system, but orders are primarily handled by Sales Representatives.</p>
+            <img src="Images/Northwind%20Traders%20-%20Sales.png" class="img-responsive img-thumbnail" />
+        </div>
+        <div class="col-md-4">
+            <h2>Staffing</h2>
+            <p>The Staffing subsystem is managed by:</p>
+            <ul>
+                <li><b>Andrew Fuller</b> - Vice President, Sales</li>
+                <li><b>Steven Buchanan</b> - Sales Manager</li>
+            </ul>
+            <img src="Images/Northwind%20Traders%20-%20Staffing.png" class="img-responsive img-thumbnail" />
+        </div>
+    </div>
+    <hr />
+    <div class="row bg-info">
+        <div class="col-md-4">
             <h2>Getting started</h2>
             <p>
                 ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.

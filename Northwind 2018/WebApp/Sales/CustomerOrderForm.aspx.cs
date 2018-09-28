@@ -9,14 +9,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Website;
+using Microsoft.AspNet.Identity.Owin; // for the .GetOwinContext() extension method
+using WebApp; // for the .GetUserManager<T>() extension method
 
 public partial class Sales_CustomerOrderForm : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!EmployeeId.HasValue)
-            Response.Redirect("~", true); // send back to the home page
+        // TODO: Uncomment once security is set up....
+        //if (!EmployeeId.HasValue)
+        //    Response.Redirect("~", true); // send back to the home page
     }
 
     private int? EmployeeId
@@ -26,7 +28,7 @@ public partial class Sales_CustomerOrderForm : Page
             int? id = null;
             if(Request.IsAuthenticated)
             {
-                var manager = new UserManager();
+                var manager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var appUser = manager.Users.SingleOrDefault(x => x.UserName == User.Identity.Name);
                 if (appUser != null)
                     id = appUser.EmployeeId;
