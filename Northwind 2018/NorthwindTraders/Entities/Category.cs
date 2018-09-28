@@ -16,8 +16,8 @@ namespace NorthwindTraders.Entities
 
         public int CategoryID { get; set; }
 
-        [Required]
-        [StringLength(15)]
+        [Required(ErrorMessage = "CategoryName is required")]
+        [StringLength(15, ErrorMessage = "A category name cannot be longer than 15 characters")]
         public string CategoryName { get; set; }
 
         [Column(TypeName = "ntext")]
@@ -25,7 +25,7 @@ namespace NorthwindTraders.Entities
 
         public byte[] Picture { get; set; }
 
-        [StringLength(40)]
+        [StringLength(40, ErrorMessage = "The PictureMimeType cannot be longer than 40 characters")]
         public string PictureMimeType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

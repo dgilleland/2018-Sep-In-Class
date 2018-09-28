@@ -52,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\CRUD\ProductsController.cs" />
+    <Compile Include="BLL\CRUD\CategoryController.cs" />
+    <Compile Include="BLL\CRUD\ProductController.cs" />
     <Compile Include="BLL\CRUD\RegionController.cs" />
     <Compile Include="BLL\CRUD\ShipperController.cs" />
+    <Compile Include="BLL\CRUD\SupplierController.cs" />
     <Compile Include="BLL\CRUD\TerritoryController.cs" />
     <Compile Include="BLL\HumanResourcesController.cs" />
     <Compile Include="BLL\ProductCatalogueController.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="DAL\NorthwindContext.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\Order_Detail.cs" />
+    <Compile Include="Entities\Partials\Employee.cs" />
     <Compile Include="Entities\POCOs\Address.cs" />
     <Compile Include="Entities\POCOs\CustomerOrder.cs" />
     <Compile Include="Entities\POCOs\CustomerOrderItem.cs" />

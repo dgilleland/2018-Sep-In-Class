@@ -6,7 +6,7 @@ namespace NorthwindTraders.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class NorthwindContext : DbContext
+    internal partial class NorthwindContext : DbContext
     {
         public NorthwindContext()
             : base("name=NW2018")

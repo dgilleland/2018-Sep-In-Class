@@ -13,5 +13,10 @@ namespace WebApp.Admin.CRUD
         {
 
         }
+
+        protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)
+        {
+
+        }
     }
 }
