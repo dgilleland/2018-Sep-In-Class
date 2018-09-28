@@ -9,7 +9,7 @@ namespace NorthwindTraders.DAL
     public partial class NorthwindContext : DbContext
     {
         public NorthwindContext()
-            : base("name=NorthwindContext")
+            : base("name=NW2018")
         {
         }
 
