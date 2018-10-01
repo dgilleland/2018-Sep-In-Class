@@ -127,8 +127,8 @@
                             <b><asp:Label Text='<%# Item.ProductName %>' runat="server" ID="ProductNameLabel" /></b>
                             <asp:CheckBox Checked='<%# Item.Discontinued %>' runat="server" ID="DiscontinuedCheckBox" Enabled="false" Text="Discontinued" CssClass="pull-right" Visible='<%# Item.Discontinued %>' />
                             <br />
-                            <i>Supplier: <asp:Label Text='<%# Item.Supplier.CompanyName %>' runat="server" ID="SupplierIDLabel" /></i>
-                            <i>Category: </i><asp:Label Text='<%# Item.Category.CategoryName %>' runat="server" ID="CategoryIDLabel" />
+                            <i>Supplier: <asp:Label Text='<%# Item.Supplier?.CompanyName %>' runat="server" ID="SupplierIDLabel" /></i>
+                            <i>Category: </i><asp:Label Text='<%# Item.Category?.CategoryName %>' runat="server" ID="CategoryIDLabel" />
                         </td>
                         <td>
                             <asp:Label Text='<%# Item.UnitPrice.HasValue?Item.UnitPrice.Value.ToString("C"):"" %>' runat="server" ID="UnitPriceLabel" />
