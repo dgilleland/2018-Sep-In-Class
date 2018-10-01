@@ -82,8 +82,8 @@
                             <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.ProductName %>' runat="server" ID="ProductNameTextBox" /></td>
-                        <td>
+                            <asp:TextBox Text='<%# BindItem.ProductName %>' runat="server" ID="ProductNameTextBox" placeholder="Product Name" />
+                            <br />
                             <asp:DropDownList ID="SupplierDropDown" runat="server"
                                 SelectedValue="<%# BindItem.SupplierID %>"
                                 DataSourceID="SuppliersDataSource"
@@ -92,8 +92,7 @@
                                 DataValueField="SupplierID">
                                 <asp:ListItem Value="">[No Supplier]</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
-                        <td>
+                            <br />
                             <asp:DropDownList ID="CategoryDropDown" runat="server"
                                 SelectedValue="<%# BindItem.CategoryID %>"
                                 DataSourceID="CategoriesDataSource"
@@ -104,19 +103,18 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.QuantityPerUnit %>' runat="server" ID="QuantityPerUnitTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.UnitPrice %>' runat="server" ID="UnitPriceTextBox" placeholder="Unit Price" />
+                            <br />
+                            <asp:TextBox Text='<%# BindItem.QuantityPerUnit %>' runat="server" ID="QuantityPerUnitTextBox" placeholder="Qty/Unit" />
+                        </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.UnitPrice %>' runat="server" ID="UnitPriceTextBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.UnitsInStock %>' runat="server" ID="UnitsInStockTextBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.UnitsOnOrder %>' runat="server" ID="UnitsOnOrderTextBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.ReorderLevel %>' runat="server" ID="ReorderLevelTextBox" /></td>
-                        <td>
-                            <asp:CheckBox Checked='<%# BindItem.Discontinued %>' runat="server" ID="DiscontinuedCheckBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.LastModified %>' runat="server" ID="LastModifiedTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.UnitsInStock %>' runat="server" ID="UnitsInStockTextBox" placeholder="In-Stock" />
+                            <br />
+                            <asp:TextBox Text='<%# BindItem.UnitsOnOrder %>' runat="server" ID="UnitsOnOrderTextBox" placeholder="On-Order" />
+                            <br />
+                            <asp:TextBox Text='<%# BindItem.ReorderLevel %>' runat="server" ID="ReorderLevelTextBox" placeholder="Reorder Level" />
+                        </td>
+                        <td></td>
                     </tr>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -126,25 +124,26 @@
                             <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                         </td>
                         <td>
-                            <asp:Label Text='<%# Item.ProductName %>' runat="server" ID="ProductNameLabel" /></td>
+                            <b><asp:Label Text='<%# Item.ProductName %>' runat="server" ID="ProductNameLabel" /></b>
+                            <asp:CheckBox Checked='<%# Item.Discontinued %>' runat="server" ID="DiscontinuedCheckBox" Enabled="false" Text="Discontinued" CssClass="pull-right" Visible='<%# Item.Discontinued %>' />
+                            <br />
+                            <i>Supplier: <asp:Label Text='<%# Item.Supplier.CompanyName %>' runat="server" ID="SupplierIDLabel" /></i>
+                            <i>Category: </i><asp:Label Text='<%# Item.Category.CategoryName %>' runat="server" ID="CategoryIDLabel" />
+                        </td>
                         <td>
-                            <asp:Label Text='<%# Item.Supplier.CompanyName %>' runat="server" ID="SupplierIDLabel" /></td>
+                            <asp:Label Text='<%# Item.UnitPrice.HasValue?Item.UnitPrice.Value.ToString("C"):"" %>' runat="server" ID="UnitPriceLabel" />
+                            (for
+                            <asp:Label Text='<%# Item.QuantityPerUnit %>' runat="server" ID="QuantityPerUnitLabel" />)
+                        </td>
                         <td>
-                            <asp:Label Text='<%# Item.Category.CategoryName %>' runat="server" ID="CategoryIDLabel" /></td>
+                            <b><asp:Label Text='<%# Item.UnitsInStock %>' runat="server" ID="UnitsInStockLabel" /></b>
+                            (<asp:Label Text='<%# Item.UnitsOnOrder %>' runat="server" ID="UnitsOnOrderLabel" /> on order)
+                            <br />
+                            Reorder at: <asp:Label Text='<%# Item.ReorderLevel %>' runat="server" ID="ReorderLevelLabel" />
+                        </td>
                         <td>
-                            <asp:Label Text='<%# Item.QuantityPerUnit %>' runat="server" ID="QuantityPerUnitLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Item.UnitPrice %>' runat="server" ID="UnitPriceLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Item.UnitsInStock %>' runat="server" ID="UnitsInStockLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Item.UnitsOnOrder %>' runat="server" ID="UnitsOnOrderLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# Item.ReorderLevel %>' runat="server" ID="ReorderLevelLabel" /></td>
-                        <td>
-                            <asp:CheckBox Checked='<%# Item.Discontinued %>' runat="server" ID="DiscontinuedCheckBox" Enabled="false" /></td>
-                        <td>
-                            <asp:Label Text='<%# Item.LastModified %>' runat="server" ID="LastModifiedLabel" /></td>
+                            <asp:Label Text='<%# Item.LastModified %>' runat="server" ID="LastModifiedLabel" />
+                        </td>
                     </tr>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -154,15 +153,11 @@
                                 <table runat="server" id="itemPlaceholderContainer" class="table table-condensed table-hover">
                                     <tr runat="server" style="">
                                         <th runat="server"></th>
-                                        <th runat="server">Name</th>
-                                        <th runat="server">Supplier</th>
-                                        <th runat="server">Category</th>
-                                        <th runat="server">Qty/Unit</th>
-                                        <th runat="server">Unit Price</th>
-                                        <th runat="server">In Stock</th>
-                                        <th runat="server">On Order</th>
-                                        <th runat="server">Reorder Level</th>
-                                        <th runat="server">Discontinued</th>
+                                        <th runat="server">
+                                            Name / Discontinued / Supplier / Category
+                                        </th>
+                                        <th runat="server">Unit Price / Qty per Unit</th>
+                                        <th runat="server">In Stock / On Order / Reorder Level</th>
                                         <th runat="server">Last Modified</th>
                                     </tr>
                                     <tr runat="server" id="itemPlaceholder"></tr>
