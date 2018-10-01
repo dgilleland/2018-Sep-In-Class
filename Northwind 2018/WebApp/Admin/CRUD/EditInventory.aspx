@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <asp:Label ID="Label1" runat="server" AssociatedControlID="PartialName">Partial Product Name</asp:Label>
-            <asp:TextBox ID="PartialName" runat="server" CssClass="form-control" />
+            <asp:TextBox ID="PartialName" runat="server" CssClass="form-control" style="display:inline-block" placeholder="e.g.: Chef" />
             <asp:LinkButton ID="Filter" runat="server" CssClass="btn btn-default">Filter by Partial Product Name</asp:LinkButton>
             <hr />
             <h2>Products</h2>
