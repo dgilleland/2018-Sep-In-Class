@@ -66,6 +66,7 @@
                             <asp:TextBox Text='<%# BindItem.LastModified %>' runat="server" ID="LastModifiedTextBox" /></td>
                     </tr>
                 </EditItemTemplate>
+                <%-- The EmptyDataTemplate is not used when we display the InsertItemTemplate
                 <EmptyDataTemplate>
                     <table runat="server" style="">
                         <tr>
@@ -73,6 +74,7 @@
                         </tr>
                     </table>
                 </EmptyDataTemplate>
+                --%>
                 <InsertItemTemplate>
                     <tr style="">
                         <td>
