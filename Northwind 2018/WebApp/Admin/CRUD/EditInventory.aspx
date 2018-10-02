@@ -16,7 +16,11 @@
             <asp:LinkButton ID="Filter" runat="server" CssClass="btn btn-default">Filter by Partial Product Name</asp:LinkButton>
             <hr />
             <h2>Products</h2>
-
+            <script>
+                function ConfirmDelete() {
+                    return confirm("Are you sure you want to permanently delete this product?");
+                }
+            </script>
             <asp:ListView ID="ProductsListView" runat="server"
                 DataSourceID="ProductsDataSource"
                 DataKeyNames="ProductID"
@@ -32,7 +36,7 @@
                             <asp:TextBox Text='<%# BindItem.ProductName %>' runat="server" ID="ProductNameTextBox" placeholder="Product Name" />
                             <asp:CheckBox ID="DiscontinuedCheckBox" runat="server" Checked='<%# BindItem.Discontinued %>' Text="Discontinued" />
                             <br />
-                            <asp:DropDownList ID="DropDownList1" runat="server"
+                            <asp:DropDownList ID="SupplierDropDown" runat="server"
                                 SelectedValue="<%# BindItem.SupplierID %>"
                                 DataSourceID="SuppliersDataSource"
                                 AppendDataBoundItems="true"
@@ -41,7 +45,7 @@
                                 <asp:ListItem Value="">[No Supplier]</asp:ListItem>
                             </asp:DropDownList>
                             <br />
-                            <asp:DropDownList ID="DropDownList2" runat="server"
+                            <asp:DropDownList ID="CategoryDropDown" runat="server"
                                 SelectedValue="<%# BindItem.CategoryID %>"
                                 DataSourceID="CategoriesDataSource"
                                 AppendDataBoundItems="true"
@@ -119,7 +123,7 @@
                 <ItemTemplate>
                     <tr style="">
                         <td>
-                            <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" />
+                            <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" OnClientClick="return ConfirmDelete()" />
                             <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
                         </td>
                         <td>
