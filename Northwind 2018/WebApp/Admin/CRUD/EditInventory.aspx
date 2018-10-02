@@ -29,9 +29,10 @@
                             <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.ProductName %>' runat="server" ID="ProductNameTextBox" /></td>
-                        <td>
-                            <asp:DropDownList ID="SupplierDropDown" runat="server"
+                            <asp:TextBox Text='<%# BindItem.ProductName %>' runat="server" ID="ProductNameTextBox" placeholder="Product Name" />
+                            <asp:CheckBox ID="DiscontinuedCheckBox" runat="server" Checked='<%# BindItem.Discontinued %>' Text="Discontinued" />
+                            <br />
+                            <asp:DropDownList ID="DropDownList1" runat="server"
                                 SelectedValue="<%# BindItem.SupplierID %>"
                                 DataSourceID="SuppliersDataSource"
                                 AppendDataBoundItems="true"
@@ -39,9 +40,8 @@
                                 DataValueField="SupplierID">
                                 <asp:ListItem Value="">[No Supplier]</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
-                        <td>
-                            <asp:DropDownList ID="CategoryDropDown" runat="server"
+                            <br />
+                            <asp:DropDownList ID="DropDownList2" runat="server"
                                 SelectedValue="<%# BindItem.CategoryID %>"
                                 DataSourceID="CategoriesDataSource"
                                 AppendDataBoundItems="true"
@@ -51,19 +51,18 @@
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.QuantityPerUnit %>' runat="server" ID="QuantityPerUnitTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.UnitPrice %>' runat="server" ID="UnitPriceTextBox" placeholder="Unit Price" />
+                            <br />
+                            <asp:TextBox Text='<%# BindItem.QuantityPerUnit %>' runat="server" ID="QuantityPerUnitTextBox" placeholder="Qty/Unit" />
+                        </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.UnitPrice %>' runat="server" ID="UnitPriceTextBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.UnitsInStock %>' runat="server" ID="UnitsInStockTextBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.UnitsOnOrder %>' runat="server" ID="UnitsOnOrderTextBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.ReorderLevel %>' runat="server" ID="ReorderLevelTextBox" /></td>
-                        <td>
-                            <asp:CheckBox Checked='<%# BindItem.Discontinued %>' runat="server" ID="DiscontinuedCheckBox" /></td>
-                        <td>
-                            <asp:TextBox Text='<%# BindItem.LastModified %>' runat="server" ID="LastModifiedTextBox" /></td>
+                            <asp:TextBox Text='<%# BindItem.UnitsInStock %>' runat="server" ID="UnitsInStockTextBox" placeholder="In-Stock" />
+                            <br />
+                            <asp:TextBox Text='<%# BindItem.UnitsOnOrder %>' runat="server" ID="UnitsOnOrderTextBox" placeholder="On-Order" />
+                            <br />
+                            <asp:TextBox Text='<%# BindItem.ReorderLevel %>' runat="server" ID="ReorderLevelTextBox" placeholder="Reorder Level" />
+                        </td>
+                        <td></td>
                     </tr>
                 </EditItemTemplate>
                 <%-- The EmptyDataTemplate is not used when we display the InsertItemTemplate
