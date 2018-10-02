@@ -50,17 +50,28 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sales <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" href="~/ProductCatalog">Our Products</a></li>
+                                <li><a runat="server" href="~/Sales/CustomerOrderForm">Customer Order Form</a></li>
+                            </ul>
+                        </li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         <li id="StaffOnly" runat="server">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a runat="server" href="~/Admin/Staffing.aspx">Staffing</a></li>
-                                <li><a runat="server" href="~/Admin/HireStaff.aspx">Hire Staff</a></li>
-                                <li><a runat="server" href="~/Admin/CRUD/EditSalesAreas.aspx">Sales Areas</a></li>
-                                <li><a runat="server" href="~/Admin/CRUD/EditShippers.aspx">Shippers</a></li>
+                                <li><a runat="server" href="~/Admin/Staffing">Staffing</a></li>
+                                <li><a runat="server" href="~/Admin/HireStaff">Hire Staff</a></li>
+                                <li><a runat="server" href="~/Admin/CRUD/EditSalesAreas">Sales Areas</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a runat="server" href="~/Admin/CRUD/EditShippers">Shippers</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a runat="server" href="~/Admin/CRUD/EditInventory">Inventory</a></li>
                             </ul>
                         </li>
+                        <li><a runat="server" href="~/Help">Help</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>

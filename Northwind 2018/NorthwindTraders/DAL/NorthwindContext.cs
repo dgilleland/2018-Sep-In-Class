@@ -1,43 +1,90 @@
-﻿using NorthwindTraders.Entities;
-using System.Data.Entity;
-
 namespace NorthwindTraders.DAL
 {
-    internal class NorthwindContext : DbContext
+    // using System; // It creates a conflict between my Entities.Version & System.Version
+    using NorthwindTraders.Entities;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
+    internal partial class NorthwindContext : DbContext
     {
-        public NorthwindContext() : base("name=NW2018") // name of the <connectionString><add name="" ...
+        public NorthwindContext()
+            : base("name=NW2018")
         {
-            // Since EF6 (by default) will want to create a database if it can't find it,
-            // we can turn that feature off programmatically in our DbContext constructor.
-            Database.SetInitializer<NorthwindContext>(null);
         }
 
-        // Properties
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Order_Detail> Order_Details { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<Shipper> Shippers { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<Territory> Territories { get; set; }
+        public virtual DbSet<Version> Versions { get; set; }
+        public virtual DbSet<VersionDDLEventLog> VersionDDLEventLogs { get; set; }
 
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Territory> Territories { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Shipper> Shippers { get; set; }
-        public DbSet<Region> Regions { get; set; }
-
-        // Override base class method that does the details of mapping entities to the database
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // Here I could have a whole lot more control over how each entity
-            // maps to the database tables.
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.CustomerID)
+                .IsFixedLength();
 
-            // DEMO: Many-to-Many Relationship Mapping
-            modelBuilder
-                .Entity<Employee>().HasMany(e => e.Territories)
-                .WithMany(t => t.Employees)
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.Employees1)
+                .WithOptional(e => e.Employee1)
+                .HasForeignKey(e => e.ReportsTo);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.Territories)
+                .WithMany(e => e.Employees)
                 .Map(m => m.ToTable("EmployeeTerritories").MapLeftKey("EmployeeID").MapRightKey("TerritoryID"));
 
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order_Detail>()
+                .Property(e => e.UnitPrice)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.CustomerID)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Freight)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(e => e.Order_Details)
+                .WithRequired(e => e.Order)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.UnitPrice)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Order_Details)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Region>()
+                .Property(e => e.RegionDescription)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Region>()
+                .HasMany(e => e.Territories)
+                .WithRequired(e => e.Region)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Shipper>()
+                .HasMany(e => e.Orders)
+                .WithOptional(e => e.Shipper)
+                .HasForeignKey(e => e.ShipVia);
+
+            modelBuilder.Entity<Territory>()
+                .Property(e => e.TerritoryDescription)
+                .IsFixedLength();
         }
     }
 }

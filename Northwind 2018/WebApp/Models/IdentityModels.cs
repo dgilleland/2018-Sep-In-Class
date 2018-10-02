@@ -13,6 +13,10 @@ namespace WebApp.Models
     // You can add User data for the user by adding more properties to your User class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        // An application user, in this web app, can be either an Employee or a Customer
+        public int? EmployeeId { get; set; }
+        public string CustomerId { get; set; }
+
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
