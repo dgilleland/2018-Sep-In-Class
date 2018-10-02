@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" Inherits="Admin_HireStaff" Codebehind="HireStaff.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-    <h1 class="page-header">New Staff Hires</h1>
 
+    <h1 class="page-header">New Staff Hires</h1>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 grid-form">
             <fieldset>
                 <legend>Job Position</legend>
                 
@@ -26,8 +26,9 @@
                 <asp:Label ID="Label5" runat="server" Text="Work Phone Extension" AssociatedControlID="Extension" />
                 <asp:TextBox ID="Extension" runat="server"></asp:TextBox>
             </fieldset>
-            <hr />
-            <asp:LinkButton ID="AddStaff" runat="server" CssClass="btn btn-primary" OnClick="AddStaff_Click">Add New Staff</asp:LinkButton>
+            <div>
+                <asp:LinkButton ID="AddStaff" runat="server" CssClass="btn btn-primary" OnClick="AddStaff_Click">Add New Staff</asp:LinkButton>
+            </div>
                     
             <br />
             <asp:Panel ID="MessagePanel" runat="server" role="alert" Visible="false">
@@ -45,7 +46,7 @@
                  Display="None"/>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-6 grid-form">
             <fieldset>
                 <legend>Personal Information</legend>
                 
@@ -103,8 +104,6 @@
             </fieldset>
         </div>
     </div>
-    <link href="/Content/bootwrap-freecode.css" rel="stylesheet" />
-    <script src="/Scripts/bootwrap-freecode.js"></script>
-
+    <link href="/Content/GridFormLayout.css" rel="stylesheet" />
 </asp:Content>
 
