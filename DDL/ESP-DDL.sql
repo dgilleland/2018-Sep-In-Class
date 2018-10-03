@@ -109,7 +109,7 @@ CREATE TABLE Orders
     GST             money
         CONSTRAINT CK_Orders_GST
             CHECK (GST >= 0)            NOT NULL,
-    Total           money               NOT NULL
+    Total           AS Subtotal + GST   -- This is now a Computed Column
 )
 
 
@@ -154,7 +154,7 @@ CREATE TABLE OrderDetails
         PRIMARY KEY (OrderNumber, ItemNumber) -- Specify all the columns in the PK
 )
 
--- Let's insert a few rows of data for the tables
+-- Let's insert a few rows of data for the tables (DML Statements)
 PRINT 'Inserting customer data'
 INSERT INTO Customers(FirstName, LastName, [Address], City, PostalCode)
     VALUES ('Clark', 'Kent', '344 Clinton Street', 'Metropolis', 'S0S0N0')
@@ -171,4 +171,19 @@ INSERT INTO InventoryItems(ItemNumber, ItemDescription, CurrentSalePrice, InStoc
 PRINT '-- end of inventory data --'
 PRINT ''
 
+-- Let's write an SQL Query statement to view the data in the database
+-- Select the customer information
+SELECT  CustomerNumber, FirstName, LastName,
+        [Address] + ' ' + City + ', ' + Province AS 'Customer Address',
+        PhoneNumber
+FROM    Customers
 
+-- Let's do another set of DML statements to add more data to the database
+PRINT 'Inserting an order'
+INSERT INTO Orders(CustomerNumber, [Date], Subtotal, GST)
+    VALUES (100, GETDATE(), 17.45, 0.87)
+INSERT INTO OrderDetails(OrderNumber, ItemNumber, Quantity, SellingPrice)
+    VALUES (200, 'H8726', 1, 17.45)
+PRINT '-- end of order data --'
+PRINT ''
+GO
