@@ -53,9 +53,36 @@ CREATE TABLE Customers
     LastName        varchar(60)         NOT NULL,
     [Address]       varchar(40)         NOT NULL,
     City            varchar(35)         NOT NULL,
-    Province        char(2)             NOT NULL,
-    PostalCode      char(6)             NOT NULL,
-    PhoneNumber     char(13)                NULL  -- NULL means the data is optional
+    Province        char(2)
+        -- A DEFAULT constraint will supply a default value for a column
+        -- whenever no value is supplied when adding a row of data
+        CONSTRAINT DF_Customers_Province
+            DEFAULT ('AB')
+        -- A CHECK constraint ensures that only the specified value(s)
+        -- will be accepted when adding a row of data
+        CONSTRAINT CK_Customers_Province
+            CHECK (Province = 'AB' OR
+                   Province = 'BC' OR
+                   Province = 'SK' OR
+                   Province = 'MB' OR
+                   Province = 'QC' OR
+                   Province = 'ON' OR
+                   Province = 'NT' OR
+                   Province = 'NS' OR
+                   Province = 'NB' OR
+                   Province = 'NL' OR
+                   Province = 'YK' OR
+                   Province = 'NU' OR
+                   Province = 'PE')
+                                        NOT NULL,
+    PostalCode      char(6)
+        CONSTRAINT CK_Customers_PostalCode
+            CHECK (PostalCode LIKE '[A-Z][0-9][A-Z][0-9][A-Z][0-9]')
+                                        NOT NULL,
+    PhoneNumber     char(13)
+        CONSTRAINT CK_Customers_PhoneNumber
+            CHECK (PhoneNumber LIKE '([0-9][0-9][0-9])[0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]')
+                                            NULL  -- NULL means the data is optional
 )
 
 CREATE TABLE Orders
@@ -72,7 +99,11 @@ CREATE TABLE Orders
             FOREIGN KEY REFERENCES
             Customers(CustomerNumber)   NOT NULL,
     [Date]          datetime            NOT NULL,
-    Subtotal        money               NOT NULL,
-    GST             money               NOT NULL,
+    Subtotal        money
+        CONSTRAINT CK_Orders_Subtotal
+            CHECK (Subtotal > 0)        NOT NULL,
+    GST             money
+        CONSTRAINT CK_Orders_GST
+            CHECK (GST >= 0)            NOT NULL,
     Total           money               NOT NULL
 )
