@@ -25,6 +25,10 @@ GO  -- this statement helps to "separate" various DDL statements in our script
 
 /* DROP TABLE statements (to "clean up" the database for re-creation)  */
 /*   You should drop tables in the REVERSE order in which you created them */
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'OrderDetails')
+    DROP TABLE OrderDetails
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'InventoryItems')
+    DROP TABLE InventoryItems
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Orders')
     DROP TABLE Orders
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Customers')
@@ -107,3 +111,64 @@ CREATE TABLE Orders
             CHECK (GST >= 0)            NOT NULL,
     Total           money               NOT NULL
 )
+
+
+CREATE TABLE InventoryItems
+(
+    ItemNumber          varchar(5)
+        CONSTRAINT PK_InventoryItems_ItemNumber
+            PRIMARY KEY                     NOT NULL,
+    ItemDescription     varchar(50)             NULL,
+    CurrentSalePrice    money
+        CONSTRAINT CK_InventoryItems_CurrentSalePrice
+            CHECK (CurrentSalePrice > 0)    NOT NULL,
+    InStockCount        int                 NOT NULL,
+    ReorderLevel        int                 NOT NULL
+)
+
+CREATE TABLE OrderDetails
+(
+    OrderNumber     int
+        CONSTRAINT FK_OrderDetails_OrderNumber_Orders_OrderNumber
+            FOREIGN KEY REFERENCES
+            Orders(OrderNumber)         NOT NULL,
+    ItemNumber      varchar(5)
+        CONSTRAINT FK_OrderDetails_ItemNumber_InventoryItems_ItemNumber
+            FOREIGN KEY REFERENCES
+            InventoryItems(ItemNumber)  NOT NULL,
+    Quantity        int
+        CONSTRAINT DF_OrderDetails_Quantity
+            DEFAULT (1)
+        CONSTRAINT CK_OrderDetails_Quantity
+            CHECK (Quantity > 0)        NOT NULL,
+    SellingPrice    money
+        CONSTRAINT CK_OrderDetails_SellingPrice
+            CHECK (SellingPrice >= 0)   NOT NULL,
+    -- The Amount column is a CALCULATED (or "derived") column.
+    -- It's value is the result of multiplying Quantity by SellingPrice.
+    Amount          AS Quantity * SellingPrice  ,
+    -- The following is a Table Constraint
+    -- A composite primary key MUST be done as a Table Constraint
+    -- because it involves two or more columns
+    CONSTRAINT PK_OrderDetails_OrderNumber_ItemNumber
+        PRIMARY KEY (OrderNumber, ItemNumber) -- Specify all the columns in the PK
+)
+
+-- Let's insert a few rows of data for the tables
+PRINT 'Inserting customer data'
+INSERT INTO Customers(FirstName, LastName, [Address], City, PostalCode)
+    VALUES ('Clark', 'Kent', '344 Clinton Street', 'Metropolis', 'S0S0N0')
+INSERT INTO Customers(FirstName, LastName, [Address], City, PostalCode)
+    VALUES ('Jimmy', 'Olsen', '242 River Close', 'Bakerline', 'B4K3R1')
+PRINT '-- end of customer data--'
+PRINT ''
+
+PRINT 'Inserting inventory items'
+INSERT INTO InventoryItems(ItemNumber, ItemDescription, CurrentSalePrice, InStockCount, ReorderLevel)
+    VALUES ('H8726', 'Cleaning Fan belt', 29.95, 3, 5)
+INSERT INTO InventoryItems(ItemNumber, ItemDescription, CurrentSalePrice, InStockCount, ReorderLevel)
+    VALUES ('H8621', 'Engine Fan belt', 17.45, 10, 5)
+PRINT '-- end of inventory data --'
+PRINT ''
+
+
