@@ -354,3 +354,44 @@ GO
 CREATE NONCLUSTERED INDEX IX_InventoryItems_ItemDescription
     ON InventoryItems (ItemDescription)
 
+-- ------------------------------------------
+
+-- H) Data change requests: All inventory items that are less than $5.00 have to
+--    have their prices increased by 10%.
+UPDATE InventoryItems
+   SET CurrentSalePrice = CurrentSalePrice * 0.10
+WHERE  CurrentSalePrice < 5.00
+
+--    Somebody got married....
+UPDATE Customers
+   SET LastName = 'Flintstone'
+WHERE  FirstName = 'Wilma' AND LastName = 'Slaghoople'
+
+UPDATE Customers
+   SET LastName = 'Rubble'
+WHERE  FirstName = 'Betty' AND LastName = 'Mcbricker'
+
+UPDATE Customers
+   SET [Address] = '103 Granite Road',
+       City = 'Bedrock'
+WHERE  LastName = 'Rubble'
+
+UPDATE Customers
+   SET [Address] = '105 Granite Road',
+       City = 'Bedrock'
+WHERE  LastName = 'Flintstone'
+GO
+
+-- Increase the current sale price for products between $10 and $30 by 2%.
+UPDATE InventoryItems
+   SET CurrentSalePrice = CurrentSalePrice * 0.02
+WHERE  CurrentSalePrice BETWEEN 10 AND 30
+
+-- Update the prices for all belts by $5.50, because of newly introduced recyling fees
+UPDATE InventoryItems
+   SET CurrentSalePrice = CurrentSalePrice + 5.5
+WHERE  ItemDescription LIKE '%Belt%'
+
+--    And, we want to get rid of some inventory
+DELETE FROM InventoryItems
+WHERE  ItemNumber IN ('GR47D', 'KD5-Q')
