@@ -187,3 +187,37 @@ INSERT INTO OrderDetails(OrderNumber, ItemNumber, Quantity, SellingPrice)
 PRINT '-- end of order data --'
 PRINT ''
 GO
+
+/* ***************************
+ * Change Requests for Spec 1
+ *  Perform table changes through ALTER statements.
+ *  Syntax for ALTER TABLE can be found at
+ *      http://msdn.microsoft.com/en-us/library/ms190273.aspx
+ *  ALTER TABLE statements allow us to change an existing table without
+ *  having ot drop it or lose information in the table
+ * **************************/
+
+-- A) Allow Address, City, Province, and Postal Code to be NULL
+--    SQL requires each column to be altered SEPARATELY.
+ALTER TABLE Customers
+    ALTER COLUMN [Address] varchar(40) NULL
+GO -- this statement helps to "separate" various DDL statements in our script. It's optional.
+
+ALTER TABLE Customers
+    ALTER COLUMN City varchar(35) NULL
+GO
+
+ALTER TABLE Customers
+    ALTER COLUMN Province char(2) NULL
+GO
+
+ALTER TABLE Customers
+    ALTER COLUMN PostalCode char(6) NULL
+GO
+
+
+
+-- B) Add a check constraint on the First and Last name to require at least two letters.
+--    % is a wildcard for zero or more characters (letter, digit, or other character)
+--    _ is a wildcard for a single character (letter, digit, or other character)
+--    [] are used to represent a range or set of characters that are allowed
