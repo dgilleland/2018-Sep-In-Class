@@ -298,7 +298,7 @@ SELECT  OrderNumber, CustomerNumber, Total, [Date]
 FROM    Orders
 GO
 
--- Prep-data for change request D)....
+-- Prep-data for change request F) below ....
 -- Some inventory data without a ItemDescription
 INSERT INTO InventoryItems(ItemNumber, ItemDescription, CurrentSalePrice, InStockCount, ReorderLevel)
     VALUES ('GR35A', NULL, 45.95, 8, 5)
