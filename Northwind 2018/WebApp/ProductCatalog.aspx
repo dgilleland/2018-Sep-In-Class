@@ -26,10 +26,10 @@
                                 </FooterTemplate>
                                 <ItemTemplate>
                                     <tr>
-                                        <th><%# Item.Name %></th>
-                                        <td><%# $"{Item.Price:C}" %></td>
-                                        <td><%# Item.QuantityPerUnit %></td>
-                                        <td><%# Item.InStock %> In stock </td>
+                                        <th class="col-md-4"><%# Item.Name %></th>
+                                        <th class="col-md-2" style="text-align:right"><%# $"{Item.Price:C}" %></th>
+                                        <td class="col-md-3">@ <%# Item.QuantityPerUnit %> each</td>
+                                        <td class="col-md-3"><%# Item.InStock %> In stock </td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>

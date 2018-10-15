@@ -16,13 +16,24 @@
                 <li><b>Steven Buchanan</b> - Sales Manager</li>
                 <li><b>Laura Callahan</b> - Inside Sales Coordinator</li>
             </ul>
+            <p>The following systems still need developing:</p>
+            <ul>
+                <li><b>Inventory Status</b> page that shows the inventory status overall or filtered by supplier.</li>
+                <li><b>Purchasing System</b> (using a separate database) to handle the placing of orders with suppliers and the receiving of orders.</li>
+            </ul>
             <img src="Images/Northwind%20Traders%20-%20Purchasing.png" class="img-responsive img-thumbnail" />
         </div>
         <div class="col-md-4">
             <h2>Sales</h2>
             <p>At Northwind Traders, our customers are small to medium sized companies who purchase our products either for resale or for use in their eating establishments. Northwind is still a little "old school". Customers don't order products directly online; rather, they phone or fax in orders to our sales team. Each order is managed by a <i>Sales Representative</i>.</p>
             <p>The Sales subsystem can be managed by all the employees of the system, but orders are primarily handled by Sales Representatives.</p>
+            <p>Anyone can view the products that we offer, and any logged-in customer can view their order history.</p>
             <img src="Images/Northwind%20Traders%20-%20Sales.png" class="img-responsive img-thumbnail" />
+            <p>Additional development is needed for the following:</p>
+            <ul>
+                <li><b>Customer Order History</b> showing previous orders and orders that are current but not yet complete (shipped).</li>
+                <li><b>Analytics</b> page to show statistical information on customers and sales.</li>
+            </ul>
         </div>
         <div class="col-md-4">
             <h2>Staffing</h2>
