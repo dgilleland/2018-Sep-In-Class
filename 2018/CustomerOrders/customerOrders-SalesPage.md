@@ -5,7 +5,7 @@ title: Sales Page
 
 The first visit to the Sales page simply displays a list of existing customers the the employee can select from to view the customer's order history or to create a new order for the customer.
 
-> ![Sales Page - First Visit](./images/First Visit.png)
+> ![Sales Page - First Visit](./images/First-Visit.png)
 
 For the drop-down, only the Company Name and Customer Id are required on the form, so a simple POCO class geared to the needs of a drop-down is needed.
 

@@ -5,7 +5,7 @@ title: Selecting a Customer
 
 When a customer is selected, the general company information is displayed, along with the order history of the customer. Order history is divided into two sets - Orders that have been shipped, and orders that have not been shipped (i.e.: "Open" orders).
 
-> ![Customer Order History](./images/Selected Company.png)
+> ![Customer Order History](./images/Selected-Company.png)
 
 When querying the database for this information, it quickly becomes clear that POCOs/DTOs are the most appropriate way to send information to the form.
 
