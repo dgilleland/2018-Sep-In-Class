@@ -40,7 +40,6 @@ module.exports = {
             '/2018/': [
                 '',
                 'CustomerOrders/',
-                'CustomerOrders/customerOrders',
                 'CustomerOrders/customerOrders-SalesPage',
                 'CustomerOrders/customerOrders-SelectedCustomer',
                 'CustomerOrders/customerOrders-EditForm',
