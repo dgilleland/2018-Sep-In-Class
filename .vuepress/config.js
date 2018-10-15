@@ -35,6 +35,26 @@ module.exports = {
             { text: 'Teaching Schedule', link: 'https://dgilleland.github.io/new/' },
             { text: 'DMIT-1508 errata', link: '/1508/' },
             { text: 'DMIT-2018 errata', link: '/2018/' },
-        ]
+        ],
+        sidebar: {
+            '/2018/': [
+                '',
+                'CustomerOrders/',
+                'CustomerOrders/customerOrders',
+                'CustomerOrders/customerOrders-SalesPage',
+                'CustomerOrders/customerOrders-SelectedCustomer',
+                'CustomerOrders/customerOrders-EditForm',
+                'CustomerOrders/customerOrders-EditForm-Query',
+                'CustomerOrders/customerOrders-EditForm-State',
+                'CustomerOrders/customerOrders-EditForm-Command',
+                'CustomerOrders/customerOrders-Save',
+                'CustomerOrders/customerOrders-Place'
+            ],
+
+            // fallback
+            '/': [
+                'about/'
+            ]
+        }
     }
 };
