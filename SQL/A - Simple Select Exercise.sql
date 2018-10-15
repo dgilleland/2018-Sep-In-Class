@@ -32,7 +32,7 @@ FROM    Student
 SELECT  StudentID, FirstName + ' ' + LastName AS 'Full Name'
 FROM    Student
 
---3. Select all the CourseId and CourseName of all the courses. Use the column aliases of Course ID and Course Name
+--3. Select the CourseId and CourseName of all the courses. Use the column aliases of Course ID and Course Name
 SELECT  CourseId AS 'Course ID', CourseName AS 'Course Name'
 FROM    Course
 
@@ -46,7 +46,7 @@ WHERE  CourseID = 'DMIT101'
 
 --5. Select the Staff names who have positionID of 3
 SELECT FirstName, LastName
-      --,PositionID -- Press [ctrl] + k, then [ctrl] + u to un-comment
+       --,PositionID -- Press [ctrl] + k, then [ctrl] + u to un-comment
 FROM   Staff
 WHERE  PositionID = 3
 
@@ -76,8 +76,8 @@ SELECT  StudentID
 FROM    Registration
 WHERE   WithdrawYN = 'Y'
 
---8.    Select the studentID's, CourseID and mark where the Mark is between 70 and 80
---      and the courseID is DMIT223 or DMIT168
+--8.    Select the studentID's, CourseID and mark where the Mark is
+--      between 70 and 80 and the courseID is DMIT223 or DMIT168
 SELECT  R.StudentID, R.CourseId, R.Mark
 FROM    Registration R
 WHERE   R.Mark BETWEEN 70 AND 80
@@ -108,7 +108,7 @@ FROM    Course
 WHERE   CourseID LIKE '____1%' -- four underscores, 1, %
 --                     DMIT158
 
---11. Select the CourseID's and Coursenames where the CourseName contains the word 'programming'
+--11. Select the CourseID's and CourseNames where the CourseName contains the word 'programming'
 
 --12. Select all the ClubNames who start with N or C.
 
