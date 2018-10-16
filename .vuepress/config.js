@@ -1,3 +1,10 @@
+import("mermaid/dist/mermaid").then(m=> {
+    m.initialize({
+        startOnLoad: true
+    });
+    m.init();
+});
+
 module.exports = {
     title: '2018 Sep',
     description: 'In-Class Demos and Supporting Notes',
