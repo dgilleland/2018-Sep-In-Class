@@ -17,9 +17,26 @@ title: DMIT 2018 - Intermediate App Dev - Errata
 
 See [this](AdHoc.md).
 
-## Sequence Diagrams
+## Flowchart(ish)
 
 ```mermaid
+graph TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+```
+
+
+## Sequence Diagrams
+
+``` mermaid
 sequenceDiagram
     Alice->>Bob: Hello Bob, how are you?
     alt is sick
