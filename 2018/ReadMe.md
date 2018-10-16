@@ -13,6 +13,21 @@ title: DMIT 2018 - Intermediate App Dev - Errata
 > I also have some Ad-Hoc code samples of stuff on the [**Ad-Hoc**](https://github.com/dgilleland/2018-Sep-In-Class/tree/AdHoc) branch of my repository for this course.
 
 
-# LINQ Practice (Ad-Hoc)
+## LINQ Practice (Ad-Hoc)
 
 See [this](AdHoc.md).
+
+## Sequence Diagrams
+
+```mermaid
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end
+```
