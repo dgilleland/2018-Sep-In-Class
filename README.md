@@ -20,4 +20,6 @@ footer: CC BY 4.0 | Copyright © 2000-present Dan Gilleland
 Go to the appropriate branch, depending on your section:
 
 - [**DMIT 1508** Database Fundamentals **A01**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-1508-A01)
-- **DMIT 2018** Intermediate Application Development [**A01**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018-A01) and [**A02**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018-A02)
+- [**DMIT 2018** Intermediate Application Development](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018) (common)
+  - [**A01**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018-A01)
+  - [**A02**](https://github.com/dgilleland/2018-Sep-In-Class/tree/DMIT-2018-A02)
