@@ -38,16 +38,7 @@ module.exports = {
         ],
         sidebar: {
             '/2018/': [
-                '',
-                'CustomerOrders/',
-                'CustomerOrders/customerOrders-SalesPage',
-                'CustomerOrders/customerOrders-SelectedCustomer',
-                'CustomerOrders/customerOrders-EditForm',
-                'CustomerOrders/customerOrders-EditForm-Query',
-                'CustomerOrders/customerOrders-EditForm-State',
-                'CustomerOrders/customerOrders-EditForm-Command',
-                'CustomerOrders/customerOrders-Save',
-                'CustomerOrders/customerOrders-Place'
+                ''
             ],
 
             // fallback
