@@ -42,7 +42,7 @@
                         <asp:Label ID="TerritoryTitle" runat="server" AssociatedControlID="EmployeeDropDown"><%# Item.TerritoryName %></asp:Label>
                         <asp:DropDownList ID="EmployeeDropDown" runat="server" CssClass="form-control"
                             DataSource="<%# ListOtherEmployees() %>" AppendDataBoundItems="true"
-                            DataTextField="DataText" DataValueField="DataValue">
+                            DataTextField="Text" DataValueField="Key">
                             <asp:ListItem Value="">[Select an employee]</asp:ListItem>
                         </asp:DropDownList>
                     </div>
