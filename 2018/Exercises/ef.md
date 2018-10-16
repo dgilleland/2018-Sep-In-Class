@@ -28,7 +28,7 @@ Add the following not mapping properties:
 - Product: DescriptionUnitSize: returns the description and unitsize as Description (UnitSize)
 - Store: CityLocation: returns the city and location as City:Location
 
-![GroceryList ERD](./ef/grocerylist_erd.png)
+! [GroceryList ERD] (./ef/grocerylist_erd.png)
 
 
 #### Context Class
@@ -43,7 +43,7 @@ Create **BLL controller classes** for the two entities: Category and Product. Th
 
 Create a web page that will display the product data related to a supplied category. Use **only ODS wired controls** to handle the data. Categories should be displayed in a ordered drop down list. Display the ordered product data in a customized data control which obtains its input parameter value from the drop down list. Your display requires appropriate page title, labels and layout/formatting. You will need a button on your page to force a post back. This page **must** be accessiable by the site master menu.
 
-![Sample query result](./ef/ExerciseQuery.png)
+! [Sample query result] (./ef/ExerciseQuery.png)
 
 
 
@@ -51,5 +51,5 @@ Create a web page that will display the product data related to a supplied categ
 
 Create a web page that will maintain the Product entity. You will be requried to insert, update or delete records to this entity. The Category data will be handled via an appropriate dropdownlist. **Use a ODS wired ListView control** to maintain the data. Appropriate formatting is required on the display lines. This page **must** be accessiable by the site master menu.
 
-![ListView CRUD](./ef/ExerciseCRUD.png)
+! [ListView CRUD] (./ef/ExerciseCRUD.png)
 
