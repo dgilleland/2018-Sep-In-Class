@@ -25,6 +25,11 @@ WHERE   CourseId = 'DMIT104'
 SELECT  COUNT(FirstName) AS 'Student Count'
 FROM    Student
 
+--3.    The argument for the COUNT() function can be any column and/or expression.
+--      COUNT() will count the number of occurrences (i.e., "rows").
+SELECT  COUNT(1) AS 'Student Count'
+FROM    Student
+
 --4.	Select how many students are taking (have a grade for) DMIT152
 SELECT  COUNT(Mark) AS 'Student Count for DMIT152'
 FROM    Registration
