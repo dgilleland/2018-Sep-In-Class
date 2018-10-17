@@ -19,7 +19,8 @@ GROUP BY CourseId                   -- Group by the non-aggregate columns
 -- When performing an Aggregate function in the SELECT clause, if you have any other 
 -- non-aggregate columns in the SELECT clause, then these must be listed in the GROUP BY clause.
 
---2. How many payments were made for each payment type. Display the Payment Type ID and the count
+--2. How many payments were made for each payment type.
+--   Display the Payment Type ID and the count
 SELECT  PaymentTypeID,                              -- Non-aggregate column (btw, it's a FK)
         COUNT(PaymentTypeID) AS 'Count of Pay Type' -- Aggregate column
 FROM    Payment
@@ -29,14 +30,16 @@ SELECT  PaymentTypeID,                              -- Non-aggregate column (btw
         COUNT(PaymentTypeID) AS 'Count of Pay Type' -- Aggregate column
 FROM    Payment
 GROUP BY PaymentTypeID
-ORDER BY COUNT(PaymentTypeID)
+ORDER BY COUNT(PaymentTypeID) ASC
+/* A note on ORDER BY
+   - The ORDER BY clause will, by default, do the sorting in ascending order.
+     You can also sort by more than one column (more on that later).
+     You can be explicit in your desired sort order by adding ASC for ascending
+     or DESC for descending after each column you identify in the sort order.
+ */
 
 --3. Select the average Mark for each studentID. Display the StudentId and their average mark
 -- TODO: Student Answer Here....
-SELECT StudentID,
-       AVG(Mark) AS 'Avg Mark'
-FROM   Registration
-GROUP BY StudentID
 
 --4. Select the same data as question 3 but only show the studentID's and averages that are > 80
 SELECT StudentID,
