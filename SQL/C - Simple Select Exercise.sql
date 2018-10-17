@@ -16,7 +16,8 @@ SELECT  CourseId,                   -- This column is a non-aggregate
         AVG(Mark) AS 'Average Mark' -- This column performs Aggregate (produce 1 value)
 FROM    Registration
 GROUP BY CourseId                   -- Group by the non-aggregate columns
--- When performing an Aggregate function in the SELECT clause, if you have any other non-aggregate columns in the SELECT clause, then these must be listed in the GROUP BY clause.
+-- When performing an Aggregate function in the SELECT clause, if you have any other 
+-- non-aggregate columns in the SELECT clause, then these must be listed in the GROUP BY clause.
 
 --2. How many payments were made for each payment type. Display the Payment Type ID and the count
 SELECT  PaymentTypeID,                              -- Non-aggregate column (btw, it's a FK)
