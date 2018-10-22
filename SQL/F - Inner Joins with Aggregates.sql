@@ -16,7 +16,7 @@ FROM    Registration R
 GROUP BY CourseName
 ORDER BY 'Average Mark' DESC
 
---3. How many payments where made for each payment type. Display the PaymentTypeDescription and the count
+--3. How many payments where made for each payment type. Display the PaymentTypeDescription and the count.
  -- TODO: Student Answer Here... 
 
  
