@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApp._Default" %>
-<%@ Register TagPrefix="wap" Namespace="WebApp.CustomerServerControls" Assembly="WebApp" %>
+<%@ Register TagPrefix="wap" Namespace="WebApp.CustomServerControls" Assembly="WebApp" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

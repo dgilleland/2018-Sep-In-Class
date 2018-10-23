@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApp.CustomerServerControls
+namespace WebApp.CustomServerControls
 {
     /// <summary>
     /// The CleanCheckBox control extends the <see cref="CheckBox"/> control by providing properties to apply classes and styles to the Input tag.
