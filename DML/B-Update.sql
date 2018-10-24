@@ -21,7 +21,7 @@ SET    MaxStudents = 10
 
 -- 3. One of the students has moved and has supplied their new address.
 --    Change the address of student 199912010 to 4407-78 Ave, Edmonton, T4Y3P0
--- SELECT * FROM Student
+-- SELECT * FROM Student WHERE StudentID = 199912010
 UPDATE Student
 SET    StreetAddress = '4407-78 Ave',
        City = 'Edmonton',
