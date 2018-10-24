@@ -30,3 +30,12 @@ INSERT INTO Club(ClubId, ClubName)
 VALUES ('START', 'Small Tech And Research Teams'),
        ('CALM', 'Coping And Lifestyle Management'),
        ('RACE', 'Rapid Acronym Creation Experts')
+
+-- ======= Practice ========
+-- 4. In your web browser, use https://randomuser.me/ to get information on three
+--    people to add as new students. Write separate insert statement for each new student.
+-- TODO: Student Answer Here....
+
+
+-- 5. Enroll each of the students you've added into the DMIT104 course.
+--    Use 'Dan Gilleland' as the instructor. At this point, their marks should be NULL.

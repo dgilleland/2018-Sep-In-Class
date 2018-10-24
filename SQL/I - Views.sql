@@ -61,11 +61,5 @@ GO
 
 --5.  Select the same information using the student grades view for studentID 199912010.
 
---6.  Using the student grades view  update the mark for studentID 199899200 in course dmit152 to be 90  and change the coursename to be 'basket weaving 101'.
-
---7.  Using the student grades view, update the  mark for studentID 199899200 in course dmit152 to be 90.
-
---8.  Using the student grades view, delete the same record from question 7.
-
---9.  Retrieve the code for the student grades view from the database.
+--6.  Retrieve the code for the student grades view from the database.
 

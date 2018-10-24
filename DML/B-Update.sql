@@ -33,3 +33,37 @@ WHERE  StudentID = 199912010
 UPDATE Student
 SET    City = 'Edmonton'
 WHERE  City = 'Edm'
+
+-- ======= Practice ========
+-- 5. For each student that does not have a mark in the Registration table,
+--    create an update statement that gives each student a different mark.
+-- TODO: Student Answer Here....
+
+-- 6. Choose a student from the previous question and withdraw them from all
+--    their courses.
+-- TODO: Student Answer Here....
+
+/* The following statements expect the presence of a view called StudentGrades.
+IF OBJECT_ID('StudentGrades', 'V') IS NOT NULL
+    DROP VIEW StudentGrades
+GO
+
+CREATE VIEW StudentGrades
+AS
+    SELECT  S.StudentID,
+            FirstName + ' ' + LastName AS 'StudentFullName',
+            C.CourseId,
+            CourseName,
+            Mark
+    FROM    Student S
+        INNER JOIN Registration R ON S.StudentID = R.StudentID
+        INNER JOIN Course C ON C.CourseId = R.CourseId
+GO
+-- SELECT * FROM StudentGrades -- Use to examine the results in the view
+*/
+--6.  Using the student grades view change the coursename to be 'basket weaving 101'.
+
+--7.  Using the student grades view, update the  mark for studentID 199899200 in course dmit152 to be 90.
+
+--8.  Using the student grades view, delete the same record from the previous question.
+
