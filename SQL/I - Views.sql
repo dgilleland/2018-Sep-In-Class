@@ -39,16 +39,16 @@ AS
     SELECT  StaffID,
             FirstName + ' ' + LastName AS 'FullName',
             P.PositionID,
-            PositionDescription AS 'Position',
+            PositionDescription AS 'PositionName',
             DateHired
     FROM    Staff S
         INNER JOIN Position P ON S.PositionID = P.PositionID
 GO
-SELECT  FullName, Position, PositionID
+SELECT  FullName, PositionName, PositionID
 FROM    StaffConfidential
 GO
 
---3.  Create a view of student ID's, full names, courseId's, course names, and grades called StudentGrades.
+--3.  Create a view called StudentGrades that retrieves the student ID's, full names, courseId's, course names, and marks for each student.
 -- TODO: Student Answer here
 
 /* *******************
