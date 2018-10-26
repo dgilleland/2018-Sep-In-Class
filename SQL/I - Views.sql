@@ -39,16 +39,16 @@ AS
     SELECT  StaffID,
             FirstName + ' ' + LastName AS 'FullName',
             P.PositionID,
-            PositionDescription AS 'Position',
+            PositionDescription AS 'PositionName',
             DateHired
     FROM    Staff S
         INNER JOIN Position P ON S.PositionID = P.PositionID
 GO
-SELECT  FullName, Position, PositionID
+SELECT  FullName, PositionName, PositionID
 FROM    StaffConfidential
 GO
 
---3.  Create a view of student ID's, full names, courseId's, course names, and grades called StudentGrades.
+--3.  Create a view called StudentGrades that retrieves the student ID's, full names, courseId's, course names, and marks for each student.
 -- TODO: Student Answer here
 
 /* *******************
@@ -61,11 +61,5 @@ GO
 
 --5.  Select the same information using the student grades view for studentID 199912010.
 
---6.  Using the student grades view  update the mark for studentID 199899200 in course dmit152 to be 90  and change the coursename to be 'basket weaving 101'.
-
---7.  Using the student grades view, update the  mark for studentID 199899200 in course dmit152 to be 90.
-
---8.  Using the student grades view, delete the same record from question 7.
-
---9.  Retrieve the code for the student grades view from the database.
+--6.  Retrieve the code for the student grades view from the database.
 
