@@ -96,7 +96,7 @@
                                 <asp:DataPager runat="server" ID="DataPager1">
                                     <Fields>
                                         <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default"></asp:NextPreviousPagerField>
-                                        <asp:NumericPagerField></asp:NumericPagerField>
+                                        <asp:NumericPagerField NumericButtonCssClass="btn btn-default"></asp:NumericPagerField>
                                         <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default"></asp:NextPreviousPagerField>
                                     </Fields>
                                 </asp:DataPager>

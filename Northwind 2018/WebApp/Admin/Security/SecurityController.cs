@@ -21,7 +21,7 @@ namespace WebApp.Admin.Security
         public SecurityController()
         {
             UserManager = HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+            RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
         }
         #endregion
 
@@ -49,22 +49,30 @@ namespace WebApp.Admin.Security
         public void UpdateUser(ApplicationUser user)
         {
             var existing = UserManager.FindById(user.Id);
-            if (existing != null)
-            {
-                var result = UserManager.Update(user);
-                CheckResult(result);
-            }
+            if (existing == null)
+                throw new Exception("The specified user was not found");
+            else if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"] && existing.UserName != user.UserName)
+                throw new Exception("You are not allowed to modify the website administrator's user name");
+            // Change certain parts of the found user
+            existing.EmployeeId = user.EmployeeId;
+            existing.Email = user.Email;
+            existing.CustomerId = user.CustomerId;
+            existing.PhoneNumber = user.PhoneNumber;
+            existing.UserName = user.UserName; // Generally NOT a good idea to change this!
+            var result = UserManager.Update(existing);
+            CheckResult(result);
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteUser(ApplicationUser user)
         {
             var existing = UserManager.FindById(user.Id);
-            if (existing != null)
-            {
-                var result = UserManager.Delete(user);
-                CheckResult(result);
-            }
+            if (existing == null)
+                throw new Exception("The specified user was not found");
+            else if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"])
+                throw new Exception("You are not allowed to delete the website administrator");
+            var result = UserManager.Delete(existing);
+            CheckResult(result);
         }
         #endregion
 
@@ -84,17 +92,24 @@ namespace WebApp.Admin.Security
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void UpdateRole(IdentityRole role)
         {
-            if(RoleManager.FindById(role.Id).Name == ConfigurationManager.AppSettings["adminRole"])
+            var existing = RoleManager.FindById(role.Id);
+            if (existing == null)
+                throw new Exception("The specified role could not be found");
+            else if (existing.Name == ConfigurationManager.AppSettings["adminRole"])
                 throw new Exception("Cannot rename the administrator role");
-            CheckResult(RoleManager.Update(role));
+            existing.Name = role.Name;
+            CheckResult(RoleManager.Update(existing));
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteRole(IdentityRole role)
         {
-            if (role.Name == ConfigurationManager.AppSettings["adminRole"])
+            var existing = RoleManager.FindById(role.Id);
+            if (existing == null)
+                throw new Exception("The specified role could not be found");
+            if (existing.Name == ConfigurationManager.AppSettings["adminRole"])
                 throw new Exception("Cannot delete the administrator role");
-            CheckResult(RoleManager.Delete(role));
+            CheckResult(RoleManager.Delete(existing));
         }
         #endregion
     }

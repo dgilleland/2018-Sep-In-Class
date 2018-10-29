@@ -23,7 +23,7 @@ public partial class UserControls_MessageUserControl : System.Web.UI.UserControl
     private const string STR_PANEL_success = "panel panel-success";
     #endregion
     #region Event Handlers
-    protected void Page_Init(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
         MessagePanel.Visible = false;
     }
