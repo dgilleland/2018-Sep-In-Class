@@ -23,16 +23,6 @@ namespace WebApp.Admin.Security
             UserManager = HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
         }
-
-        internal void AddUser(ApplicationUser user, string password, params string[] roles)
-        {
-            var result = UserManager.Create(user, password);
-            if(result.Succeeded)
-            {
-                foreach(var role in roles)
-                    UserManager.AddToRole(UserManager.FindByName(user.UserName).Id, role);
-            }
-        }
         #endregion
 
         #region ApplicationUser CRUD
@@ -52,6 +42,7 @@ namespace WebApp.Admin.Security
         public void AddUser(ApplicationUser user)
         {
             IdentityResult result = UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
+            CheckResult(result);
         }
 
         [DataObjectMethod(DataObjectMethodType.Update)]
