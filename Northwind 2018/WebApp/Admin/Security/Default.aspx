@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebApp.Admin.Security.Default" %>
+
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -17,9 +18,9 @@
                 ItemType="WebApp.Models.ApplicationUser">
                 <EditItemTemplate>
                     <tr style="">
-                        <td>
-                            <asp:Button runat="server" CommandName="Update" Text="Update" ID="UpdateButton" />
-                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" ID="CancelButton" />
+                        <td style="white-space:nowrap;">
+                            <asp:Button runat="server" CommandName="Update" Text="Update" CssClass="btn btn-default" ID="UpdateButton" />
+                            <asp:Button runat="server" CommandName="Cancel" Text="Cancel" CssClass="btn btn-default" ID="CancelButton" />
                         </td>
                         <td>
                             <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" />
@@ -33,15 +34,13 @@
                             <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" />
 
                         </td>
-                        <td>
-                        </td>
                     </tr>
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <tr style="">
-                        <td>
-                            <asp:Button runat="server" CommandName="Insert" Text="Insert" ID="InsertButton" />
-                            <asp:Button runat="server" CommandName="Cancel" Text="Clear" ID="CancelButton" />
+                        <td style="white-space:nowrap;">
+                            <asp:Button runat="server" CommandName="Insert" Text="Insert" CssClass="btn btn-default" ID="InsertButton" />
+                            <asp:Button runat="server" CommandName="Cancel" Text="Clear" CssClass="btn btn-default" ID="CancelButton" />
                         </td>
                         <td>
                             <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" />
@@ -52,15 +51,15 @@
                         </td>
                         <td>
                             <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" />
-                            <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" /></td>
-                        <td></td>
+                            <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" />
+                        </td>
                     </tr>
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <tr style="">
-                        <td>
-                            <asp:Button runat="server" CommandName="Delete" Text="Delete" ID="DeleteButton" />
-                            <asp:Button runat="server" CommandName="Edit" Text="Edit" ID="EditButton" />
+                        <td style="white-space:nowrap;">
+                            <asp:Button runat="server" CommandName="Delete" Text="Delete" CssClass="btn btn-default" ID="DeleteButton" />
+                            <asp:Button runat="server" CommandName="Edit" Text="Edit" CssClass="btn btn-default" ID="EditButton" />
                         </td>
                         <td>
                             <asp:Label Text='<%# Item.UserName %>' runat="server" ID="UserNameLabel" />
@@ -73,9 +72,8 @@
                         </td>
                         <td>
                             <asp:Label Text='<%# Item.Email %>' runat="server" ID="EmailLabel" />
-                            <asp:Label Text='<%# Item.PhoneNumber %>' runat="server" ID="PhoneNumberLabel" /></td>
-                        <td>
-                            <asp:Label Text='<%# string.Join(", ", Item.Roles.Select(x => x.RoleId)) %>' runat="server" ID="RolesLabel" /></td>
+                            <asp:Label Text='<%# Item.PhoneNumber %>' runat="server" ID="PhoneNumberLabel" />
+                        </td>
                     </tr>
                 </ItemTemplate>
                 <LayoutTemplate>
@@ -87,8 +85,7 @@
                                         <th runat="server"></th>
                                         <th runat="server">UserName (Id)</th>
                                         <th runat="server">Employee / Customer</th>
-                                        <th runat="server">Email / PhoneNumber</th>
-                                        <th runat="server">Roles</th>
+                                        <th runat="server">Email / Phone Number</th>
                                     </tr>
                                     <tr runat="server" id="itemPlaceholder"></tr>
                                 </table>
@@ -98,9 +95,9 @@
                             <td runat="server" style="">
                                 <asp:DataPager runat="server" ID="DataPager1">
                                     <Fields>
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default"></asp:NextPreviousPagerField>
                                         <asp:NumericPagerField></asp:NumericPagerField>
-                                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False"></asp:NextPreviousPagerField>
+                                        <asp:NextPreviousPagerField ButtonType="Button" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default"></asp:NextPreviousPagerField>
                                     </Fields>
                                 </asp:DataPager>
                             </td>
@@ -112,17 +109,31 @@
         <div class="col-md-3">
             <h2>Roles</h2>
             <asp:ListView ID="RolesListView" runat="server"
-                 DataSourceID="RolesDataSource" DataKeyNames="Id" InsertItemPosition="FirstItem"
-                 ItemType="Microsoft.AspNet.Identity.EntityFramework.IdentityRole">
-                <LayoutTemplate><div id="itemPlaceholder" runat="server"></div></LayoutTemplate>
+                DataSourceID="RolesDataSource" DataKeyNames="Id" InsertItemPosition="FirstItem"
+                ItemType="Microsoft.AspNet.Identity.EntityFramework.IdentityRole">
+                <LayoutTemplate>
+                    <div id="itemPlaceholder" runat="server"></div>
+                </LayoutTemplate>
                 <ItemTemplate>
-                    <div><%# Item.Name %></div>
+                    <div>
+                        <asp:LinkButton runat="server" CommandName="Delete" ID="DeleteButton"><i class="glyphicon glyphicon-remove"></i></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Edit" ID="EditButton"><i class="glyphicon glyphicon-pencil"></i></asp:LinkButton>
+                        <%# Item.Name %>
+                    </div>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <div></div>
+                    <div>
+                        <asp:LinkButton runat="server" CommandName="Update" ID="UpdateButton"><i class="glyphicon glyphicon-ok"></i></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton"><i class="glyphicon glyphicon-arrow-left"></i></asp:LinkButton>
+                        <asp:TextBox ID="RoleName" runat="server" Text="<%# BindItem.Name %>"></asp:TextBox>
+                    </div>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <div></div>
+                    <div>
+                        <asp:LinkButton runat="server" CommandName="Insert" ID="InsertButton"><i class="glyphicon glyphicon-plus"></i></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton"><i class="glyphicon glyphicon-ban-circle"></i></asp:LinkButton>
+                        <asp:TextBox ID="RoleName" runat="server" Text="<%# BindItem.Name %>"></asp:TextBox>
+                    </div>
                 </InsertItemTemplate>
             </asp:ListView>
         </div>

@@ -84,12 +84,16 @@ namespace WebApp.Admin.Security
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void UpdateRole(IdentityRole role)
         {
+            if(RoleManager.FindById(role.Id).Name == ConfigurationManager.AppSettings["adminRole"])
+                throw new Exception("Cannot rename the administrator role");
             CheckResult(RoleManager.Update(role));
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteRole(IdentityRole role)
         {
+            if (role.Name == ConfigurationManager.AppSettings["adminRole"])
+                throw new Exception("Cannot delete the administrator role");
             CheckResult(RoleManager.Delete(role));
         }
         #endregion

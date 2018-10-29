@@ -17,8 +17,8 @@ public partial class Sales_CustomerOrderForm : Page
     protected void Page_Load(object sender, EventArgs e)
     {
         // TODO: Uncomment once security is set up....
-        //if (!EmployeeId.HasValue)
-        //    Response.Redirect("~", true); // send back to the home page
+        if (!EmployeeId.HasValue)
+            Response.Redirect("~", true); // send back to the home page
     }
 
     private int? EmployeeId

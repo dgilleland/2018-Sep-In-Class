@@ -22,6 +22,9 @@ namespace WebApp.Admin.Security
             string adminRole = ConfigurationManager.AppSettings["adminRole"];
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             roleManager.Create(new IdentityRole { Name = adminRole });
+            var startupRoles = ConfigurationManager.AppSettings["startupRoles"].Split(';');
+            foreach(var role in startupRoles)
+                roleManager.Create(new IdentityRole { Name = role });
             #endregion
 
             #region Seed the users
