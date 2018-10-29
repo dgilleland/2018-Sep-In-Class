@@ -175,6 +175,7 @@
     <Content Include="Admin\CRUD\EditShippers.aspx" />
     <Content Include="Admin\FireStaff.aspx" />
     <Content Include="Admin\HireStaff.aspx" />
+    <Content Include="Admin\Security\Default.aspx" />
     <Content Include="Admin\Staffing.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -389,6 +390,14 @@
     <Compile Include="Admin\HireStaff.aspx.designer.cs">
       <DependentUpon>HireStaff.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Security\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Security\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Security\SecurityController.cs" />
     <Compile Include="Admin\Staffing.aspx.cs">
       <DependentUpon>Staffing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
