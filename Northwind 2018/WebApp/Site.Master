@@ -69,6 +69,8 @@
                                 <li><a runat="server" href="~/Admin/CRUD/EditShippers">Shippers</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a runat="server" href="~/Admin/CRUD/EditInventory">Inventory</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a runat="server" href="~/Admin/Security">Security Admin</a></li>
                             </ul>
                         </li>
                         <li><a runat="server" href="~/Help">Help</a></li>

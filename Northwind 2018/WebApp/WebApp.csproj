@@ -398,6 +398,7 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Security\SecurityController.cs" />
+    <Compile Include="Admin\Security\SecurityDbContextInitializer.cs" />
     <Compile Include="Admin\Staffing.aspx.cs">
       <DependentUpon>Staffing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

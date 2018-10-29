@@ -20,8 +20,18 @@ namespace WebApp.Admin.Security
         private readonly RoleManager<IdentityRole> RoleManager;
         public SecurityController()
         {
-             UserManager = HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            UserManager = HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+        }
+
+        internal void AddUser(ApplicationUser user, string password, params string[] roles)
+        {
+            var result = UserManager.Create(user, password);
+            if(result.Succeeded)
+            {
+                foreach(var role in roles)
+                    UserManager.AddToRole(UserManager.FindByName(user.UserName).Id, role);
+            }
         }
         #endregion
 
@@ -32,22 +42,38 @@ namespace WebApp.Admin.Security
             return UserManager.Users.ToList();
         }
 
+        private void CheckResult(IdentityResult result)
+        {
+            if (!result.Succeeded)
+                throw new Exception($"Failed to add new user:<ul> {string.Join(string.Empty, result.Errors.Select(x => $"<li>{x}</li>"))}</ul>");
+        }
+
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public void AddUser(ApplicationUser user)
         {
             IdentityResult result = UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
-            if (!result.Succeeded)
-                throw new Exception($"Failed to add new user:<ul> {string.Join(string.Empty,result.Errors.Select(x => $"<li>{x}</li>"))}</ul>");
         }
 
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void UpdateUser(ApplicationUser user)
-        { }
+        {
+            var existing = UserManager.FindById(user.Id);
+            if (existing != null)
+            {
+                var result = UserManager.Update(user);
+                CheckResult(result);
+            }
+        }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteUser(ApplicationUser user)
         {
-
+            var existing = UserManager.FindById(user.Id);
+            if (existing != null)
+            {
+                var result = UserManager.Delete(user);
+                CheckResult(result);
+            }
         }
         #endregion
 
@@ -61,16 +87,20 @@ namespace WebApp.Admin.Security
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public void AddRole(IdentityRole role)
         {
-
+            CheckResult(RoleManager.Create(role));
         }
 
         [DataObjectMethod(DataObjectMethodType.Update)]
         public void UpdateRole(IdentityRole role)
-        { }
+        {
+            CheckResult(RoleManager.Update(role));
+        }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public void DeleteRole(IdentityRole role)
-        { }
+        {
+            CheckResult(RoleManager.Delete(role));
+        }
         #endregion
     }
 }
