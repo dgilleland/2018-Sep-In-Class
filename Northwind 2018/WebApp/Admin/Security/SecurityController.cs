@@ -35,7 +35,10 @@ namespace WebApp.Admin.Security
         private void CheckResult(IdentityResult result)
         {
             if (!result.Succeeded)
-                throw new Exception($"Security changes were not applied:<ul> {string.Join(string.Empty, result.Errors.Select(x => $"<li>{x}</li>"))}</ul>");
+                throw new Exception($@"Security changes were not applied:<ul>
+                                       {string.Join(string.Empty,
+                                                    result.Errors
+                                                    .Select(x => $"<li>{x}</li>"))}</ul>");
         }
 
         [DataObjectMethod(DataObjectMethodType.Insert)]

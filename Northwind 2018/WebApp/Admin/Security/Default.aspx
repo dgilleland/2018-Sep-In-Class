@@ -11,7 +11,10 @@
     </div>
     <div class="row">
         <div class="col-md-9">
-            <h2>Users</h2>
+            <h2>
+                Users
+                <a href="~/Admin/Security/RegisterNorthwindUsers.aspx" runat="server" class="btn btn-default">Northwind User Registrations &rarr;</a>
+            </h2>
             <asp:ListView ID="UsersListView" runat="server"
                 DataSourceID="UsersDataSource" DataKeyNames="Id"
                 InsertItemPosition="FirstItem"
@@ -23,35 +26,33 @@
                             <asp:Button runat="server" CommandName="Cancel" Text="Cancel" CssClass="btn btn-default" ID="CancelButton" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" />
+                            <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" CssClass="form-control" />
                         </td>
                         <td>
                             <asp:TextBox Text='<%# BindItem.EmployeeId %>' runat="server" ID="EmployeeIdTextBox" />
                             <asp:TextBox Text='<%# BindItem.CustomerId %>' runat="server" ID="CustomerIdTextBox" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" />
-                            <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" />
+                            <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" CssClass="form-control" />
+                            <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" CssClass="form-control" />
 
                         </td>
                     </tr>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <tr style="">
+                    <tr class="bg-info">
                         <td style="white-space:nowrap;">
                             <asp:Button runat="server" CommandName="Insert" Text="Insert" CssClass="btn btn-default" ID="InsertButton" />
                             <asp:Button runat="server" CommandName="Cancel" Text="Clear" CssClass="btn btn-default" ID="CancelButton" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" />
+                            <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" CssClass="form-control" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.EmployeeId %>' runat="server" ID="EmployeeIdTextBox" />
-                            <asp:TextBox Text='<%# BindItem.CustomerId %>' runat="server" ID="CustomerIdTextBox" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" />
-                            <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" />
+                            <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" CssClass="form-control" />
+                            <asp:TextBox Text='<%# BindItem.PhoneNumber %>' runat="server" ID="PhoneNumberTextBox" CssClass="form-control" />
                         </td>
                     </tr>
                 </InsertItemTemplate>
@@ -129,7 +130,7 @@
                     </div>
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <div>
+                    <div class="bg-info">
                         <asp:LinkButton runat="server" CommandName="Insert" ID="InsertButton"><i class="glyphicon glyphicon-plus"></i></asp:LinkButton>
                         <asp:LinkButton runat="server" CommandName="Cancel" ID="CancelButton"><i class="glyphicon glyphicon-ban-circle"></i></asp:LinkButton>
                         <asp:TextBox ID="RoleName" runat="server" Text="<%# BindItem.Name %>"></asp:TextBox>

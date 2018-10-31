@@ -176,6 +176,7 @@
     <Content Include="Admin\FireStaff.aspx" />
     <Content Include="Admin\HireStaff.aspx" />
     <Content Include="Admin\Security\Default.aspx" />
+    <Content Include="Admin\Security\RegisterNorthwindUsers.aspx" />
     <Content Include="Admin\Staffing.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -397,6 +398,15 @@
     <Compile Include="Admin\Security\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Security\Pocos\UnregisteredUser.cs" />
+    <Compile Include="Admin\Security\RegisterNorthwindUsers.aspx.cs">
+      <DependentUpon>RegisterNorthwindUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Security\RegisterNorthwindUsers.aspx.designer.cs">
+      <DependentUpon>RegisterNorthwindUsers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Security\RegistrationController.cs" />
     <Compile Include="Admin\Security\SecurityController.cs" />
     <Compile Include="Admin\Security\SecurityDbContextInitializer.cs" />
     <Compile Include="Admin\Staffing.aspx.cs">

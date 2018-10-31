@@ -59,6 +59,7 @@
     <Compile Include="BLL\CRUD\SupplierController.cs" />
     <Compile Include="BLL\CRUD\TerritoryController.cs" />
     <Compile Include="BLL\HumanResourcesController.cs" />
+    <Compile Include="BLL\NorthwindUserController.cs" />
     <Compile Include="BLL\ProductCatalogueController.cs" />
     <Compile Include="BLL\SalesController.cs" />
     <Compile Include="Entities\Category.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Entities\POCOs\RegionalManager.cs" />
     <Compile Include="Entities\POCOs\StaffTerritory.cs" />
     <Compile Include="Entities\POCOs\TerritoryAssignment.cs" />
+    <Compile Include="Entities\POCOs\UserProfile.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Region.cs" />
     <Compile Include="Entities\Shipper.cs" />
