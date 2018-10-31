@@ -15,7 +15,10 @@ RETURN
 GO
 */
 
--- 1. Create a stored procedure called AddPosition that will accept a Position Description (varchar 50). Return the primary key value that was database-generated as a result of your Insert statement. Also, ensure that the supplied description is not NULL and that it is at least 5 characters long. Make sure that you do not allow a duplicate position name.
+-- 1. Create a stored procedure called AddPosition that will accept a Position Description (varchar 50).
+--    Return the primary key value that was database-generated as a result of your Insert statement.
+--    Also, ensure that the supplied description is not NULL and that it is at least 5 characters long.
+--    Make sure that you do not allow a duplicate position name.
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'AddPosition')
     DROP PROCEDURE AddPosition
 GO
@@ -60,7 +63,8 @@ EXEC AddPosition 'Me' -- This should result in an error being raised
 EXEC AddPosition 'The Boss' -- This should result in an error as well (a duplicate)
 GO
 
--- 2) Create a stored procedure called LookupClubMembers that takes a club ID and returns the full names of all members in the club.
+-- 2) Create a stored procedure called LookupClubMembers that takes a club ID and returns
+--    the full names of all members in the club.
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'LookupClubMembers')
     DROP PROCEDURE LookupClubMembers
 GO
@@ -90,7 +94,9 @@ EXEC LookupClubMembers 'Drop Out'
 EXEC LookupClubMembers 'NASA1'
 EXEC LookupClubMembers NULL
 
--- 3) Create a stored procedure called RemoveClubMembership that takes a club ID and deletes all the members of that club. Be sure that the club exists. Also, raise an error if there were no members deleted from the club.
+-- 3) Create a stored procedure called RemoveClubMembership that takes a club ID and deletes all the
+--    members of that club. Be sure that the club exists. Also, raise an error if there were no
+--    members deleted from the club.
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'RemoveClubMembership')
     DROP PROCEDURE RemoveClubMembership
 GO
@@ -122,15 +128,21 @@ EXEC RemoveClubMembership 'CSS'
 EXEC RemoveClubMembership 'CSS' -- The second time this is run, there will be no members to remove
 
 
--- 4) Create a stored procedure called OverActiveMembers that takes a single number: ClubCount. This procedure should return the names of all members that are active in as many or more clubs than the supplied club count.
---    (p.s. - You might want to make sure to add more members to more clubs, seeing as tests for the last question might remove a lot of club members....)
+-- 4) Create a stored procedure called OverActiveMembers that takes a single number: ClubCount. 
+--    This procedure should return the names of all members that are active in as many or more
+--    clubs than the supplied club count.
+--    (p.s. - You might want to make sure to add more members to more clubs, seeing as tests
+--    for the last question might remove a lot of club members....)
 
 
 
--- 5) Create a stored procedure called ListStudentsWithoutClubs that lists the full names of all students who are not active in a club.
+-- 5) Create a stored procedure called ListStudentsWithoutClubs that lists the full names of all
+--    students who are not active in a club.
 
 
 
--- 6) Create a stored procedure called LookupStudent that accepts a partial student last name and returns a list of all students whose last name includes the partial last name. Return the student first and last name as well as their ID.
+-- 6) Create a stored procedure called LookupStudent that accepts a partial student last name and
+--    returns a list of all students whose last name includes the partial last name. Return the
+--    student first and last name as well as their ID.
 
 
