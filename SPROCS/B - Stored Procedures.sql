@@ -43,9 +43,10 @@ AS
     -- Body of procedure here
     IF @ClubId IS NULL OR @ClubName IS NULL
     BEGIN
+        -- RAISERROR will NOT exit the stored procedure...
         RAISERROR('Club ID and Name are required', 16, 1)
     END
-    ELSE
+    ELSE -- ... which is why we need to have this ELSE statement
     BEGIN
         INSERT INTO Club(ClubId, ClubName)
         VALUES (@ClubId, @ClubName)
