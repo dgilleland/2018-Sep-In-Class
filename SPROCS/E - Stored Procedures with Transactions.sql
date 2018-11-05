@@ -79,8 +79,8 @@ GO
 
 
 -- 2. Add a stored procedure called AdjustMarks that takes in a course ID. The procedure should
---    adjusts the marks of all students for that course by increasing the mark by 10%. Be sure that
---    nobody gets a mark over 100%.
+--    adjusts the marks of all students for that course by increasing their mark by 10%.
+--    Be sure that nobody gets a mark over 100%.
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.ROUTINES WHERE ROUTINE_TYPE = N'PROCEDURE' AND ROUTINE_NAME = 'AdjustMarks')
     DROP PROCEDURE AdjustMarks
 GO
@@ -174,7 +174,7 @@ AS
             INSERT INTO Registration (StudentID, CourseId, Semester)
             VALUES (@StudentID, @CourseID, @Semester)
 
-            IF @@ERROR <> 0    
+            IF @@ERROR <> 0 OR @@ROWCOUNT = 0
             BEGIN
                 RAISERROR ('Registration insert failed', 16, 1)
                 ROLLBACK TRANSACTION
@@ -185,7 +185,7 @@ AS
                    SET  BalanceOwing = BalanceOwing + @CourseCost
                 WHERE   StudentID = @StudentID
 
-                IF @@ERROR <> 0
+                IF @@ERROR <> 0 OR @@ROWCOUNT = 0
                 BEGIN
                     RAISERROR ('Balance update failed', 16, 1)
                     ROLLBACK TRANSACTION
