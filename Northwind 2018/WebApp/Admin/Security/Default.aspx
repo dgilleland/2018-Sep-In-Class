@@ -16,9 +16,11 @@
                 <a href="~/Admin/Security/RegisterNorthwindUsers.aspx" runat="server" class="btn btn-default">Northwind User Registrations &rarr;</a>
             </h2>
             <asp:ListView ID="UsersListView" runat="server"
-                DataSourceID="UsersDataSource" DataKeyNames="Id"
+                DataSourceID="UsersDataSource" DataKeyNames="UserId"
                 InsertItemPosition="FirstItem"
-                ItemType="WebApp.Models.ApplicationUser">
+                OnItemInserting="UsersListView_ItemInserting"
+                OnItemUpdating="UsersListView_ItemUpdating"
+                ItemType="WebApp.Admin.Security.DTOs.RegisteredUser">
                 <EditItemTemplate>
                     <tr style="">
                         <td style="white-space:nowrap;">
@@ -29,8 +31,8 @@
                             <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" CssClass="form-control" />
                         </td>
                         <td>
-                            <asp:TextBox Text='<%# BindItem.EmployeeId %>' runat="server" ID="EmployeeIdTextBox" />
-                            <asp:TextBox Text='<%# BindItem.CustomerId %>' runat="server" ID="CustomerIdTextBox" />
+                            <asp:CheckBoxList ID="AssignedUserRoles" runat="server" DataSourceID="RolesDataSource" DataTextField="Name" DataValueField="Id">
+                            </asp:CheckBoxList>
                         </td>
                         <td>
                             <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" CssClass="form-control" />
@@ -49,6 +51,8 @@
                             <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" CssClass="form-control" />
                         </td>
                         <td>
+                            <asp:CheckBoxList ID="AssignedUserRoles" runat="server" DataSourceID="RolesDataSource" DataTextField="Name" DataValueField="Id">
+                            </asp:CheckBoxList>
                         </td>
                         <td>
                             <asp:TextBox Text='<%# BindItem.Email %>' runat="server" ID="EmailTextBox" CssClass="form-control" />
@@ -65,14 +69,20 @@
                         <td>
                             <asp:Label Text='<%# Item.UserName %>' runat="server" ID="UserNameLabel" />
                             <br />
-                            <small>(<asp:Label Text='<%# Item.Id %>' runat="server" ID="IdLabel" />)</small>
+                            <small>(<asp:Label Text='<%# Item.UserId %>' runat="server" ID="IdLabel" />)</small>
                         </td>
                         <td>
-                            <asp:Label Text='<%# Item.EmployeeId %>' runat="server" ID="EmployeeIdLabel" />
-                            <asp:Label Text='<%# Item.CustomerId %>' runat="server" ID="CustomerIdLabel" />
+                            <asp:Repeater ID="UserRoleRepeater" runat="server"
+                                 DataSource="<%# Item.UserRoles %>"
+                                 
+                ItemType="WebApp.Admin.Security.DTOs.RegisteredUser.UserRole">
+                                <ItemTemplate><%# Item.RoleName %></ItemTemplate>
+                                <SeparatorTemplate>,</SeparatorTemplate>
+                            </asp:Repeater>
                         </td>
                         <td>
                             <asp:Label Text='<%# Item.Email %>' runat="server" ID="EmailLabel" />
+                            <br />
                             <asp:Label Text='<%# Item.PhoneNumber %>' runat="server" ID="PhoneNumberLabel" />
                         </td>
                     </tr>
@@ -85,7 +95,7 @@
                                     <tr runat="server" style="">
                                         <th runat="server"></th>
                                         <th runat="server">UserName (Id)</th>
-                                        <th runat="server">Employee / Customer</th>
+                                        <th runat="server">User Roles</th>
                                         <th runat="server">Email / Phone Number</th>
                                     </tr>
                                     <tr runat="server" id="itemPlaceholder"></tr>
@@ -141,7 +151,7 @@
     </div>
 
     <asp:ObjectDataSource ID="UsersDataSource" runat="server"
-        DataObjectTypeName="WebApp.Models.ApplicationUser"
+        DataObjectTypeName="WebApp.Admin.Security.DTOs.RegisteredUser"
         DeleteMethod="DeleteUser"
         InsertMethod="AddUser"
         OldValuesParameterFormatString="original_{0}"

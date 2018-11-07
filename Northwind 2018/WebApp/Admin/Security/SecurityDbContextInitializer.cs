@@ -19,9 +19,7 @@ namespace WebApp.Admin.Security
         protected override void Seed(ApplicationDbContext context)
         {
             #region Seed the roles
-            string adminRole = ConfigurationManager.AppSettings["adminRole"];
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            roleManager.Create(new IdentityRole { Name = adminRole });
             var startupRoles = ConfigurationManager.AppSettings["startupRoles"].Split(';');
             foreach(var role in startupRoles)
                 roleManager.Create(new IdentityRole { Name = role });
@@ -29,12 +27,15 @@ namespace WebApp.Admin.Security
 
             #region Seed the users
             string adminUser = ConfigurationManager.AppSettings["adminUserName"];
+            string adminRole = ConfigurationManager.AppSettings["adminRole"];
+            string adminEmail = ConfigurationManager.AppSettings["adminEmail"];
+            string adminPassword = ConfigurationManager.AppSettings["adminPassword"];
             var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
             var result = userManager.Create(new ApplicationUser
             {
                 UserName = adminUser,
-                Email = ConfigurationManager.AppSettings["adminEmail"]
-            }, ConfigurationManager.AppSettings["adminPassword"]);
+                Email = adminEmail
+            }, adminPassword);
             if (result.Succeeded)
                 userManager.AddToRole(userManager.FindByName(adminUser).Id, adminRole);
             #endregion

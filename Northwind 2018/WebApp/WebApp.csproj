@@ -398,6 +398,7 @@
     <Compile Include="Admin\Security\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Security\DTOs\RegisteredUser.cs" />
     <Compile Include="Admin\Security\Pocos\UnregisteredUser.cs" />
     <Compile Include="Admin\Security\RegisterNorthwindUsers.aspx.cs">
       <DependentUpon>RegisterNorthwindUsers.aspx</DependentUpon>

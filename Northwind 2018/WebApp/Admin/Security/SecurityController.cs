@@ -8,6 +8,8 @@ using Microsoft.AspNet.Identity; // for the IdentityRole and RoleManager, etc.
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin; // for the .GetOwinContext() extension method
 using WebApp; // for the .GetUserManager<T>() extension method
+using WebApp.Admin.Security.DTOs;
+using WebApp.Admin.Security.Pocos;
 using WebApp.Models; // for the ApplicationUser class
 
 namespace WebApp.Admin.Security
@@ -25,13 +27,7 @@ namespace WebApp.Admin.Security
         }
         #endregion
 
-        #region ApplicationUser CRUD
-        [DataObjectMethod(DataObjectMethodType.Select)]
-        public List<ApplicationUser> ListUsers()
-        {
-            return UserManager.Users.ToList();
-        }
-
+        #region Private helper methods
         private void CheckResult(IdentityResult result)
         {
             if (!result.Succeeded)
@@ -40,39 +36,116 @@ namespace WebApp.Admin.Security
                                                     result.Errors
                                                     .Select(x => $"<li>{x}</li>"))}</ul>");
         }
+        #endregion
+
+        #region ApplicationUser CRUD
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public List<RegisteredUser> ListUsers()
+        {
+            // Adapt the list of ApplicationUser objects from the UserManager
+            // to a collection of RegisteredUser objects
+            var result = from person in UserManager.Users.ToList()
+                         select new RegisteredUser
+                         {
+                             UserId = person.Id,
+                             UserName = person.UserName,
+                             Email = person.Email,
+                             PhoneNumber = person.PhoneNumber,
+                             UserType = person.EmployeeId.HasValue ? UserType.Employee
+                                      : string.IsNullOrWhiteSpace(person.CustomerId) ? UserType.Customer
+                                      :  (UserType?) null,
+                             UserRoles = from role in person.Roles
+                                         select new RegisteredUser.UserRole
+                                         {
+                                             RoleId = role.RoleId,
+                                             RoleName = RoleManager.FindById(role.RoleId).Name
+                                         }
+                         };
+            return result.ToList();
+        }
 
         [DataObjectMethod(DataObjectMethodType.Insert)]
-        public void AddUser(ApplicationUser user)
+        public void AddUser(RegisteredUser user)
         {
-            IdentityResult result = UserManager.Create(user, ConfigurationManager.AppSettings["newUserPassword"]);
+            // NOTE: Ideally, we should be doing this in a TransactionScope to ensure
+            //       that it all succeeds or fails as a group.
+            var appUser = new ApplicationUser
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            IdentityResult result = UserManager.Create(appUser, ConfigurationManager.AppSettings["newUserPassword"]);
             CheckResult(result);
+
+            if (user.UserRoles.Any()) // Faster than user.UserRoles.Count() > 0
+            {
+                // Note that the ID of the role should be treated as the "more reliable"
+                // truth about the role as supplied from the presentation layer.
+                var roles = from role in user.UserRoles
+                            select RoleManager.FindById(role.RoleId).Name;
+                result =
+                    UserManager.AddToRoles(UserManager.FindByName(appUser.UserName).Id,
+                                           roles.ToArray());
+                CheckResult(result);
+            }
         }
 
         [DataObjectMethod(DataObjectMethodType.Update)]
-        public void UpdateUser(ApplicationUser user)
+        public void UpdateUser(RegisteredUser user)
         {
-            var existing = UserManager.FindById(user.Id);
+            // NOTE: Ideally, we should be doing this in a TransactionScope to ensure
+            //       that it all succeeds or fails as a group.
+            var existing = UserManager.FindById(user.UserId);
             if (existing == null)
                 throw new Exception("The specified user was not found");
-            else if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"] && existing.UserName != user.UserName)
+            if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"] &&
+                existing.UserName != user.UserName)
                 throw new Exception("You are not allowed to modify the website administrator's user name");
+            var adminRoleId = RoleManager.FindByName(ConfigurationManager.AppSettings["adminRole"]).Id;
+            if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"] &&
+                !user.UserRoles.Any(x => x.RoleId == adminRoleId))
+                throw new Exception("You are not allowed to remove the website administrator from their administration role");
+
             // Change certain parts of the found user
-            existing.EmployeeId = user.EmployeeId;
             existing.Email = user.Email;
-            existing.CustomerId = user.CustomerId;
             existing.PhoneNumber = user.PhoneNumber;
             existing.UserName = user.UserName; // Generally NOT a good idea to change this!
             var result = UserManager.Update(existing);
             CheckResult(result);
+
+            // Remove from any roles not in the list supplied
+            var removeRoles = existing.Roles
+                             .Where(x => !user.UserRoles.Any(y => x.RoleId == y.RoleId))
+                             .Select(x => RoleManager.FindById(x.RoleId).Name);
+            if (removeRoles.Any())
+            {
+                result = UserManager.RemoveFromRoles(user.UserId,
+                                                     removeRoles.ToArray());
+                CheckResult(result);
+            }
+
+            // Add to roles any that are new
+            var currentRoles = existing.Roles
+                              .Where(x => user.UserRoles.Any(y => x.RoleId == y.RoleId));
+            var newRoles = user.UserRoles
+                           .Where(x => !currentRoles.Any(y => x.RoleId == y.RoleId))
+                           .Select(x => RoleManager.FindById(x.RoleId).Name);
+            if (newRoles.Any())
+            {
+                result = UserManager.AddToRoles(user.UserId,
+                                                newRoles.ToArray());
+                CheckResult(result);
+            }
         }
 
         [DataObjectMethod(DataObjectMethodType.Delete)]
-        public void DeleteUser(ApplicationUser user)
+        public void DeleteUser(RegisteredUser user)
         {
-            var existing = UserManager.FindById(user.Id);
+            var existing = UserManager.FindById(user.UserId);
             if (existing == null)
                 throw new Exception("The specified user was not found");
-            else if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"])
+            if (existing.UserName == ConfigurationManager.AppSettings["adminUserName"])
                 throw new Exception("You are not allowed to delete the website administrator");
             var result = UserManager.Delete(existing);
             CheckResult(result);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApp.Admin.Security.DTOs;
 
 namespace WebApp.Admin.Security
 {
@@ -16,6 +17,28 @@ namespace WebApp.Admin.Security
         protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)
         {
             MessageUserControl.HandleDataBoundException(e);
+        }
+
+        protected void UsersListView_ItemInserting(object sender, ListViewInsertEventArgs e)
+        {
+            var addToRoles = new List<RegisteredUser.UserRole>();
+            var roles = e.Item.FindControl("AssignedUserRoles") as CheckBoxList;
+            if (roles != null)
+                foreach (ListItem item in roles.Items)
+                    if (item.Selected)
+                        addToRoles.Add(new RegisteredUser.UserRole { RoleId = item.Value });
+            e.Values[nameof(RegisteredUser.UserRoles)] = addToRoles;
+        }
+
+        protected void UsersListView_ItemUpdating(object sender, ListViewUpdateEventArgs e)
+        {
+            var addToRoles = new List<RegisteredUser.UserRole>();
+            var roles = UsersListView.Items[e.ItemIndex].FindControl("AssignedUserRoles") as CheckBoxList;
+            if (roles != null)
+                foreach (ListItem item in roles.Items)
+                    if (item.Selected)
+                        addToRoles.Add(new RegisteredUser.UserRole { RoleId = item.Value });
+            e.NewValues[nameof(RegisteredUser.UserRoles)] = addToRoles;
         }
     }
 }
