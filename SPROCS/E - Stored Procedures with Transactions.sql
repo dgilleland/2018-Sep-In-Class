@@ -411,10 +411,10 @@ RETURN
 GO
 
 -- 7. Create a stored procedure called ArchiveStudentGrades that will accept a year and will archive
---    all grade records from that year from the grade table to an ArchiveGrade table. Copy all the
---    appropriate records from the grade table to the ArchiveGrade table and delete them from the
---    grade table. The ArchiveGrade table will have the same definition as the grade table but will
---    not have any constraints.
+--    all student records from that year from the registration table to an ArchiveGrade table. Copy all the
+--    appropriate records from the registration table to the ArchiveGrade table and delete them from the
+--    registration table. The ArchiveGrade table must have the same column definitions as the registration table
+--    but without any check, default, primary or foreign key constraints.
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'ArchiveGrade')
     DROP TABLE ArchiveGrade
 
