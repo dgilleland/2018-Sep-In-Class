@@ -31,7 +31,10 @@
                             <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" CssClass="form-control" />
                         </td>
                         <td>
-                            <asp:CheckBoxList ID="AssignedUserRoles" runat="server" DataSourceID="RolesDataSource" DataTextField="Name" DataValueField="Id">
+                            <asp:CheckBoxList ID="AssignedUserRoles" runat="server"
+                                DataSourceID="RolesDataSource"
+                                DataTextField="Name" DataValueField="Id"
+                                OnDataBound="AssignedUserRoles_DataBound">
                             </asp:CheckBoxList>
                         </td>
                         <td>
@@ -51,7 +54,9 @@
                             <asp:TextBox Text='<%# BindItem.UserName %>' runat="server" ID="UserNameTextBox" CssClass="form-control" />
                         </td>
                         <td>
-                            <asp:CheckBoxList ID="AssignedUserRoles" runat="server" DataSourceID="RolesDataSource" DataTextField="Name" DataValueField="Id">
+                            <asp:CheckBoxList ID="AssignedUserRoles" runat="server"
+                                DataSourceID="RolesDataSource" DataTextField="Name"
+                                DataValueField="Id">
                             </asp:CheckBoxList>
                         </td>
                         <td>

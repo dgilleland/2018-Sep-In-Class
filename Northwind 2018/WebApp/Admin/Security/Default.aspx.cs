@@ -40,5 +40,25 @@ namespace WebApp.Admin.Security
                         addToRoles.Add(new RegisteredUser.UserRole { RoleId = item.Value });
             e.NewValues[nameof(RegisteredUser.UserRoles)] = addToRoles;
         }
+
+        protected void AssignedUserRoles_DataBound(object sender, EventArgs e)
+        {
+            var control = sender as CheckBoxList;
+            if( control != null )
+            {
+                var parent = (sender as Control).Parent as ListViewDataItem;
+                if (parent != null)
+                {
+                    var data = parent.DataItem as RegisteredUser;
+                    if(data != null)
+                    {
+                        foreach(ListItem item in control.Items)
+                        {
+                            item.Selected = data.UserRoles.Any(x => x.RoleId == item.Value);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
