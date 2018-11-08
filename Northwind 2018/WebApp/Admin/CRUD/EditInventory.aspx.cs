@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApp.Admin.Security;
 
 namespace WebApp.Admin.CRUD
 {
@@ -11,7 +12,9 @@ namespace WebApp.Admin.CRUD
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Secure access to this page
+            if (!Request.IsAuthenticated || User.IsInRole(Settings.EmployeeRole))
+                Response.Redirect("~", true);
         }
 
         protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)

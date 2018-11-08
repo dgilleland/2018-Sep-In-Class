@@ -410,6 +410,7 @@
     <Compile Include="Admin\Security\RegistrationController.cs" />
     <Compile Include="Admin\Security\SecurityController.cs" />
     <Compile Include="Admin\Security\SecurityDbContextInitializer.cs" />
+    <Compile Include="Admin\Security\Settings.cs" />
     <Compile Include="Admin\Staffing.aspx.cs">
       <DependentUpon>Staffing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

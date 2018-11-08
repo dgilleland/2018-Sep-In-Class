@@ -6,13 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApp.Admin.Security;
 
 public partial class Admin_Staffing : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Secure access to this page
+        if (!Request.IsAuthenticated
+            || User.IsInRole(Settings.EmployeeRole)
+            || User.IsInRole(Settings.AdminRole))
+            Response.Redirect("~", true);
+
         MessageBox.Text = "";
-        // TODO: Make sure the only one to manage this page is the VP Sales "Vice President, Sales"
     }
 
     protected void StaffTerritoryId_ItemDeleting(object sender, ListViewDeleteEventArgs e)
