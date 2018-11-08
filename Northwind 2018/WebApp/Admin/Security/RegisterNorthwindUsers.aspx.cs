@@ -45,6 +45,7 @@ namespace WebApp.Admin.Security
                             throw new Exception("Unrecognized Northwind User Type. Only exmployees and customers can be added on this page.");
 
                         controller.RegisterUser(user);
+                        UnregisteredUsersListView.DataBind();
                     }, "Added User", $"Successfully added the {typeCtrl.Text} {userNameCtrl.Text}.");
                 }
             }
