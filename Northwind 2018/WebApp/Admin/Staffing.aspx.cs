@@ -14,8 +14,8 @@ public partial class Admin_Staffing : System.Web.UI.Page
     {
         // Secure access to this page
         if (!Request.IsAuthenticated
-            || User.IsInRole(Settings.EmployeeRole)
-            || User.IsInRole(Settings.AdminRole))
+            || !User.IsInRole(Settings.EmployeeRole)
+            || !User.IsInRole(Settings.AdminRole))
             Response.Redirect("~", true);
 
         MessageBox.Text = "";

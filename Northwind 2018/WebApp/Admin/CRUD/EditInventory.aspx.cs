@@ -13,7 +13,7 @@ namespace WebApp.Admin.CRUD
         protected void Page_Load(object sender, EventArgs e)
         {
             // Secure access to this page
-            if (!Request.IsAuthenticated || User.IsInRole(Settings.EmployeeRole))
+            if (!Request.IsAuthenticated || !User.IsInRole(Settings.EmployeeRole))
                 Response.Redirect("~", true);
         }
 

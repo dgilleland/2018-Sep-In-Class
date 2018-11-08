@@ -12,7 +12,7 @@ public partial class Admin_CRUD_EditSalesAreas : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         // Secure access to this page
-        if (!Request.IsAuthenticated || User.IsInRole(Settings.EmployeeRole))
+        if (!Request.IsAuthenticated || !User.IsInRole(Settings.EmployeeRole))
             Response.Redirect("~", true);
     }
 
