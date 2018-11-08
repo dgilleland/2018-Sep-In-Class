@@ -1,9 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterNorthwindUsers.aspx.cs" Inherits="WebApp.Admin.Security.RegisterNorthwindUsers" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>TBA</h1>
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
-    <asp:ListView ID="UnregisteredUsersListView" runat="server" DataSourceID="UnregisteredUsersDataSource">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <h1>Process Unregistered Employees and Customers</h1>
+
+    <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
+
+    <asp:ListView ID="UnregisteredUsersListView" runat="server"
+         DataSourceID="UnregisteredUsersDataSource"
+         OnItemCommand="UnregisteredUsersListView_ItemCommand">
         <ItemTemplate>
             <tr style="">
                 <td>
@@ -12,7 +19,6 @@
                 </td>
                 <td>
                     <asp:HiddenField Value='<%# Bind("Id") %>' runat="server" ID="IdHiddenField" />
-                    <asp:TextBox Text='<%# Bind("UserType") %>' runat="server" ID="UserTypeTextBox" />
                     <asp:Label Text='<%# Eval("UserType") %>' runat="server" ID="UserTypeLabel" />
                 </td>
                 <td>
@@ -36,7 +42,6 @@
                         <table runat="server" id="itemPlaceholderContainer" style="" border="0">
                             <tr runat="server" style="">
                                 <th runat="server"></th>
-                                <th runat="server">Id</th>
                                 <th runat="server">UserType</th>
                                 <th runat="server">Name</th>
                                 <th runat="server">OtherName</th>
