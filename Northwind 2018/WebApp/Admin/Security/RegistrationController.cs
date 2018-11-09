@@ -20,7 +20,7 @@ namespace WebApp.Admin.Security
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<UnregisteredUser> ListAllUnregisteredUsers()
         {
-            // Make an in-memory list of employees who have login accounts
+            // Make an in-memory list of employees & customers who have login accounts
             var userManager = HttpContext.Current.Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var registered = from user in userManager.Users
                              where user.EmployeeId.HasValue
