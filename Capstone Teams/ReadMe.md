@@ -10,3 +10,5 @@ Create an app that allows setting up teams for Capstone 2019. Use the accompanyi
 - Only assign students to clients that have been confirmed as participating.
 
 ![](Capstone_2019.png)
+
+![](Capstone_2019_ERD.png)
