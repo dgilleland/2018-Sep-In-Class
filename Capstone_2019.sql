@@ -1,4 +1,4 @@
-﻿USE [Capstone_2019]
+USE [Capstone_2019]
 GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_dbo.TeamAssignments_dbo.Students_StudentId]') AND parent_object_id = OBJECT_ID(N'[dbo].[TeamAssignments]'))
 ALTER TABLE [dbo].[TeamAssignments] DROP CONSTRAINT [FK_dbo.TeamAssignments_dbo.Students_StudentId]
