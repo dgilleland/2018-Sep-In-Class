@@ -15,6 +15,7 @@ namespace WebApp.Admin.Security
             // Secure access to this page
             if (!Request.IsAuthenticated || !User.IsInRole(Settings.AdminRole))
                 Response.Redirect("~", true);
+            CurrentUserName.Text = User.Identity.Name;
         }
 
         protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)

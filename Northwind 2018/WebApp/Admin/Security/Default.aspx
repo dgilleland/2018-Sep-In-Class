@@ -3,7 +3,10 @@
 <%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 class="page-header">Website Security - Users and Roles</h1>
+    <h1 class="page-header">
+        Website Security - Users and Roles
+        <small><asp:Literal ID="CurrentUserName" runat="server" /></small>
+    </h1>
     <div class="row">
         <div class="col-md-12">
             <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
