@@ -1,4 +1,5 @@
-﻿using GroceryStore.Entities;
+﻿using GroceryStore.DAL;
+using GroceryStore.Entities;
 using GroceryStore.Entities.POCOsDTOs;
 using System;
 using System.Collections.Generic;
@@ -40,13 +41,23 @@ namespace GroceryStore.BLL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Order> Orders_UnDeliveredList()
         {
-            throw new NotImplementedException();
+            using (var context = new GroceryListContext())
+            {
+                var results = from data in context.Orders
+                              where !data.PickedDate.HasValue // Not picked
+                                 && !data.PickerID.HasValue // "can" be assumed, kinda
+                              select data;
+                return results.ToList();
+            }
         }
 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Picker> Pickers_List()
         {
-            throw new NotImplementedException();
+            using (var context = new GroceryListContext())
+            {
+                return context.Pickers.ToList();
+            }
         }
         #endregion
     }
