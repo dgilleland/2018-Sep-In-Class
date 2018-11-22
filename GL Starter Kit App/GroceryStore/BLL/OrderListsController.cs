@@ -20,6 +20,7 @@ namespace GroceryStore.BLL
         /// <param name="orderid">The primary key ID of the order</param>
         /// <returns>List of <see cref="OrderItem"/> objects on the given order.</returns>
         [DataObjectMethod(DataObjectMethodType.Select)]
+        // NOTE: OrderItem and PickListItem are, together, equivalent to the PickList POCO
         public List<OrderItem> OrderLists_OrderPickList(int orderid)
         {
             // Retrieve the items on an order.
