@@ -36,7 +36,25 @@ namespace WebApp
             {
                 // Populate the customer information from the BLL
                 var controller = new OrderListsController();
-                var customerInfo = controller.Customers_Get(int.Parse(OrderNumberDropDown.SelectedValue));
+                int orderId = int.Parse(OrderNumberDropDown.SelectedValue);
+                                
+                var customerInfo = controller.Customers_Get(orderId);
+
+                /* NOTE:
+                 * If you were going to have a customerId to send into the BLL method,
+                 * then you could have gotten that using the following code:
+
+                var orders = controller.Orders_UnDeliveredList();
+                int customerId = orders.Single(x => x.OrderID == orderId).CustomerID;
+                var customerInfo = controller.Customers_Get(customerId);
+
+                var pickListData = controller.OrderLists_OrderPickList(orderId);
+                OrderItemGridView.DataSource = pickListData;
+                OrderItemGridView.DataBind();
+
+                 */
+
+                // Populate the data
                 CustomerName.Text = customerInfo.FirstName + " " + customerInfo.LastName;
                 ContactNumber.Text = customerInfo.Phone;
             }

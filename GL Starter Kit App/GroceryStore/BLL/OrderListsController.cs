@@ -14,6 +14,11 @@ namespace GroceryStore.BLL
     public class OrderListsController
     {
         #region Query Methods
+        /// <summary>
+        /// Used to get a list of all the order items for a given order.
+        /// </summary>
+        /// <param name="orderid">The primary key ID of the order</param>
+        /// <returns>List of <see cref="OrderItem"/> objects on the given order.</returns>
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<OrderItem> OrderLists_OrderPickList(int orderid)
         {
