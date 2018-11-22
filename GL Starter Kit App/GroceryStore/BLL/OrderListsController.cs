@@ -13,6 +13,7 @@ namespace GroceryStore.BLL
     public class OrderListsController
     {
         #region Query Methods
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<OrderItem> OrderLists_OrderPickList(int orderid)
         {
             // Retrieve the items on an order. Only unpicked orders are to be retrieved
@@ -42,6 +43,7 @@ namespace GroceryStore.BLL
             throw new NotImplementedException();
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
         public List<Picker> Pickers_List()
         {
             throw new NotImplementedException();
