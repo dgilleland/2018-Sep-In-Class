@@ -24,7 +24,7 @@ namespace GroceryStore.BLL
             throw new NotImplementedException();
         }
 
-        public void OrderLists_Picking(int pickingid, int ordereid, List<PickList> picklist)
+        public void OrderLists_Picking(int pickingid, int ordereid, List<PickListItem> picklist)
         {
             // Transaction!
             // Update order list item record(s), update order totals, picker and pick date

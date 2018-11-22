@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace GroceryStore.Entities.POCOsDTOs
 {
-    public class PickList
+    public class PickListItem
     {
+        public int OrderItemId { get; set; }
+        public double QuantityPicked { get; set; }
+        public string PickIssue { get; set; }
     }
 }
