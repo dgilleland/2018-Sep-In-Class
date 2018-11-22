@@ -59,6 +59,7 @@
     <Compile Include="Entities\OrderList.cs" />
     <Compile Include="Entities\Picker.cs" />
     <Compile Include="Entities\POCOsDTOs\Customer.cs" />
+    <Compile Include="Entities\POCOsDTOs\OrderItem.cs" />
     <Compile Include="Entities\POCOsDTOs\PickList.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Store.cs" />

@@ -12,7 +12,7 @@ namespace GroceryStore.BLL
     [DataObject]
     public class OrderListsController
     {
-        public List<PickList> OrderLists_OrderPickList(int orderid)
+        public List<OrderItem> OrderLists_OrderPickList(int orderid)
         {
             // Retrieve the items on an order. Only unpicked orders are to be retrieved
 
