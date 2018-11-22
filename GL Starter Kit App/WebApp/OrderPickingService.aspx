@@ -8,8 +8,25 @@
             <div>
                 <asp:Label ID="Label1" runat="server"
                     AssociatedControlID="OrderNumberDropDown">Order Number</asp:Label>
-                <asp:DropDownList ID="OrderNumberDropDown" runat="server">
+                <asp:DropDownList ID="OrderNumberDropDown" runat="server" 
+                    DataSourceID="OrderNumberDataSource"
+                    AppendDataBoundItems="true"
+                    DataTextField="OrderID" DataValueField="OrderID">
                     <asp:ListItem Value="0">[Select an order]</asp:ListItem>
+                </asp:DropDownList>
+                <asp:LinkButton ID="FetchOrder" runat="server"
+                     CssClass="btn btn-default">Fetch</asp:LinkButton>
+                <asp:Label ID="Label2" runat="server">Customer</asp:Label>
+                <asp:Label ID="CustomerName" runat="server" />
+                <asp:Label ID="Label3" runat="server">Contact</asp:Label>
+                <asp:Label ID="ContactNumber" runat="server" />
+                <asp:Label ID="Label4" runat="server"
+                    AssociatedControlID="PickerDropDown">Picker</asp:Label>
+                <asp:DropDownList ID="PickerDropDown" runat="server"
+                    DataSourceID="PickerDataSource"
+                    AppendDataBoundItems="true"
+                    DataTextField="FullName" DataValueField="PickerID">
+                    <asp:ListItem Value="0">[Select a picker]</asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>

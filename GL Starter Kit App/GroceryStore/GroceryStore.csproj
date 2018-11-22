@@ -58,6 +58,7 @@
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderList.cs" />
     <Compile Include="Entities\Picker.cs" />
+    <Compile Include="Entities\PickerExtension.cs" />
     <Compile Include="Entities\POCOsDTOs\Customer.cs" />
     <Compile Include="Entities\POCOsDTOs\OrderItem.cs" />
     <Compile Include="Entities\POCOsDTOs\PickList.cs" />
