@@ -15,11 +15,14 @@
                     <asp:ListItem Value="0">[Select an order]</asp:ListItem>
                 </asp:DropDownList>
                 <asp:LinkButton ID="FetchOrder" runat="server"
-                     CssClass="btn btn-default">Fetch</asp:LinkButton>
+                     CssClass="btn btn-default"
+                     OnClick="FetchOrder_Click">Fetch</asp:LinkButton>
+
                 <asp:Label ID="Label2" runat="server">Customer</asp:Label>
                 <asp:Label ID="CustomerName" runat="server" />
                 <asp:Label ID="Label3" runat="server">Contact</asp:Label>
                 <asp:Label ID="ContactNumber" runat="server" />
+
                 <asp:Label ID="Label4" runat="server"
                     AssociatedControlID="PickerDropDown">Picker</asp:Label>
                 <asp:DropDownList ID="PickerDropDown" runat="server"
@@ -29,6 +32,31 @@
                     <asp:ListItem Value="0">[Select a picker]</asp:ListItem>
                 </asp:DropDownList>
             </div>
+            <asp:GridView ID="OrderItemGridView" runat="server"
+                AutoGenerateColumns="False" DataKeyNames="OrderItemId"
+                DataSourceID="OrderItemsDataSource">
+                <Columns>
+                    <asp:BoundField DataField="ProductName" HeaderText="Product" SortExpression="ProductName"></asp:BoundField>
+                    <asp:BoundField DataField="Quantity" HeaderText="Qty" SortExpression="Quantity"></asp:BoundField>
+                    <asp:BoundField DataField="Comment" HeaderText="Comment" SortExpression="Comment"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Picked">
+                        <ItemTemplate>
+                            <asp:HiddenField ID="OrderListId" runat="server"
+                                 Value='<%# Eval("OrderListId") %>' />
+                            <asp:TextBox ID="PickQuantity" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Pick Issue">
+                        <ItemTemplate>
+                            <asp:TextBox ID="PickIssueComment" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+
+            <asp:LinkButton ID="SavePickOrder" runat="server"
+                 CssClass="btn btn-primary"
+                 OnClick="SavePickOrder_Click">Save</asp:LinkButton>
         </div>
         <div class="col-md-4">
             <!-- Message User Control Here -->

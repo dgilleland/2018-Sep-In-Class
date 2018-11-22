@@ -17,14 +17,31 @@ namespace GroceryStore.BLL
         [DataObjectMethod(DataObjectMethodType.Select)]
         public List<OrderItem> OrderLists_OrderPickList(int orderid)
         {
-            // Retrieve the items on an order. Only unpicked orders are to be retrieved
-
-            throw new NotImplementedException();
+            // Retrieve the items on an order.
+            // Only unpicked orders are to be retrieved
+            // TODO: Student work - Query to get the data.
+            return new List<OrderItem>(); // empty list - TEMP
+            //throw new NotImplementedException();
         }
 
-        public Customer Customers_Get(int customerid)
+        // NOTE: From the order, I can get the customer :)
+        /// <summary>
+        /// Gets the customer details for a specific order
+        /// </summary>
+        /// <param name="orderId">An order Id related to the customer</param>
+        /// <returns>Customer (entity) object</returns>
+        public Customer Customers_Get(int orderId)
         {
-            throw new NotImplementedException();
+            using (var context = new GroceryListContext())
+            {
+                return context.Orders
+                       .Single(x => x.OrderID == orderId)
+                       ?.Customer; // ?. -- If the result of the
+                                   // .Single() is null, return null,
+                                   // otherwise, return the .Customer
+                                   // ?. is called the
+                                   // null conditional operator
+            }
         }
         #endregion
 

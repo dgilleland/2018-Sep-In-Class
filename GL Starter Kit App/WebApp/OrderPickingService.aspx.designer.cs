@@ -94,6 +94,24 @@ namespace WebApp {
         protected global::System.Web.UI.WebControls.DropDownList PickerDropDown;
         
         /// <summary>
+        /// OrderItemGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView OrderItemGridView;
+        
+        /// <summary>
+        /// SavePickOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton SavePickOrder;
+        
+        /// <summary>
         /// OrderNumberDataSource control.
         /// </summary>
         /// <remarks>
