@@ -17,7 +17,11 @@
             <!-- Message User Control Here -->
         </div>
     </div>
-    <asp:ObjectDataSource ID="OrderNumberDataSource" runat="server"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="PickerDataSource" runat="server"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="OrderItemsDataSource" runat="server"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OrderNumberDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Orders_UnDeliveredList" TypeName="GroceryStore.BLL.OrderListsController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="PickerDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Pickers_List" TypeName="GroceryStore.BLL.OrderListsController"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OrderItemsDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="OrderLists_OrderPickList" TypeName="GroceryStore.BLL.OrderListsController">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="OrderNumberDropDown" PropertyName="SelectedValue" Name="orderid" Type="Int32"></asp:ControlParameter>
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>
