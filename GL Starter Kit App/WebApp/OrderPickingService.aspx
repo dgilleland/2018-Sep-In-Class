@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderPickingService.aspx.cs" Inherits="WebApp.OrderPickingService" %>
 
+<%@ Register Src="~/UserControl/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1 class="page-header">Order Picking Service</h1>
 
@@ -60,6 +63,7 @@
         </div>
         <div class="col-md-4">
             <!-- Message User Control Here -->
+            <uc1:MessageUserControl runat="server" id="MessageUserControl" />
         </div>
     </div>
     <asp:ObjectDataSource ID="OrderNumberDataSource" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="Orders_UnDeliveredList" TypeName="GroceryStore.BLL.OrderListsController"></asp:ObjectDataSource>

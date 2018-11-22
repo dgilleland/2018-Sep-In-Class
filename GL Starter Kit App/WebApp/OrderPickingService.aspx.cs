@@ -17,7 +17,17 @@ namespace WebApp
 
         protected void SavePickOrder_Click(object sender, EventArgs e)
         {
+            MessageUserControl.TryRun(() =>
+            {
+                // Get the data from the GridView & form,
+                // then send to the BLL for processing
 
+                // Update the form
+                OrderNumberDropDown.Items.Clear(); // because of AppendDataBoundItems being true
+                OrderNumberDropDown.DataBind(); // should cascade to include
+                                                // the gridview's data,
+                                                // because of the dependency
+            }, "Order Picked", "Order Ready for Pickup by Customer");
         }
 
         protected void FetchOrder_Click(object sender, EventArgs e)
