@@ -1,5 +1,5 @@
 -- Triggers Samples
-USE IQSchool
+USE [A01-School]
 GO
 
 /*
