@@ -109,7 +109,10 @@ CREATE TABLE Orders
     GST             money
         CONSTRAINT CK_Orders_GST
             CHECK (GST >= 0)            NOT NULL,
-    Total           AS Subtotal + GST   -- This is now a Computed Column
+    Total           AS Subtotal + GST,  -- This is now a Computed Column
+    -- A table-level constraint is needed for two or more columns working in tandom
+    CONSTRAINT CK_Orders_Subtotal_GST
+        CHECK (GST <= Subtotal * .05)   -- for a 5% GST Maximum value
 )
 
 
