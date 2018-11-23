@@ -27,6 +27,8 @@ namespace WebApp
                 OrderNumberDropDown.DataBind(); // should cascade to include
                                                 // the gridview's data,
                                                 // because of the dependency
+                OrderNumberDropDown.Items.Insert(0, new ListItem("[Select a picker]", "0"));
+
             }, "Order Picked", "Order Ready for Pickup by Customer");
         }
 
