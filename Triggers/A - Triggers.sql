@@ -206,7 +206,7 @@ AS
 	    INSERT INTO BalanceOwingLog (ChangedateTime,OldBalance,NewBalance)
 	    SELECT GETDATE(), D.BalanceOwing, I.BalanceOwing
         FROM deleted D INNER JOIN inserted I on D.StudentID = I.StudentID
-	    IF @@ERROR <>0 
+	    IF @@ERROR <> 0 
 	    BEGIN
 		    RAISERROR('Insert into BalanceOwingLog Failed',16,1)
             ROLLBACK TRANSACTION
