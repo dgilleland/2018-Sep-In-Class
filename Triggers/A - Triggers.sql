@@ -54,6 +54,11 @@ AS
     END
 RETURN
 GO
+-- Before doing my tests, examine the data in the table
+-- to see what I could use for testing purposes
+SELECT * FROM Activity
+SELECT StudentID, FirstName, LastName FROM Student
+
 -- The following test should result in a rollback.
 INSERT INTO Activity(StudentID, ClubId)
 VALUES (200495500, 'CIPS') -- Robert Smith
