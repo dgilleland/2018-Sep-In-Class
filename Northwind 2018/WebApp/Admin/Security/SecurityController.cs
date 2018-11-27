@@ -190,6 +190,13 @@ namespace WebApp.Admin.Security
         #endregion
 
         #region Employee/Customer IDs
+        /// <summary>
+        /// Extract the EmployeeID (if it exists) for the supplied username
+        /// </summary>
+        /// <param name="userName">Logged-in user name; typically 
+        /// <code>User.Identity.Name</code> from your web form.
+        /// </param>
+        /// <returns>Null, if no EmployeeID was found, or the ID of the employee</returns>
         public int? GetCurrentUserEmployeeId(string userName)
         {
             int? id = null;
@@ -204,6 +211,13 @@ namespace WebApp.Admin.Security
             return id;
         }
 
+        /// <summary>
+        /// Extract the Customer (if it exists) for the supplied username
+        /// </summary>
+        /// <param name="userName">Logged-in user name; typically 
+        /// <code>User.Identity.Name</code> from your web form.
+        /// </param>
+        /// <returns>Null, if no CustomerID was found, or the ID of the customer</returns>
         public string GetCurrentUserCustomerId(string userName)
         {
             string id = null;
