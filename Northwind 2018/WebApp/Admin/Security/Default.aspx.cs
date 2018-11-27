@@ -15,7 +15,18 @@ namespace WebApp.Admin.Security
             // Secure access to this page
             if (!Request.IsAuthenticated || !User.IsInRole(Settings.AdminRole))
                 Response.Redirect("~", true);
+
+            CurrentUserFeedback();
+        }
+
+        private void CurrentUserFeedback()
+        {
             CurrentUserName.Text = User.Identity.Name;
+            List<string> roleChecks = new List<string>();
+            if (User.IsInRole(Settings.AdminRole)) roleChecks.Add(Settings.AdminRole);
+            if (User.IsInRole(Settings.CustomerRole)) roleChecks.Add(Settings.CustomerRole);
+            if (User.IsInRole(Settings.EmployeeRole)) roleChecks.Add(Settings.EmployeeRole);
+            CurrentUserRoles.Text = string.Join(", ", roleChecks);
         }
 
         protected void CheckForExceptions(object sender, ObjectDataSourceStatusEventArgs e)

@@ -22,6 +22,15 @@ namespace WebApp.Admin.Security {
         protected global::System.Web.UI.WebControls.Literal CurrentUserName;
         
         /// <summary>
+        /// CurrentUserRoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal CurrentUserRoles;
+        
+        /// <summary>
         /// MessageUserControl control.
         /// </summary>
         /// <remarks>

@@ -9,6 +9,7 @@
     </h1>
     <div class="row">
         <div class="col-md-12">
+            <p>Your Roles: <asp:Literal ID="CurrentUserRoles" runat="server" /></p>
             <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
         </div>
     </div>
