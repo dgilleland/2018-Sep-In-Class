@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{092C6D2B-2332-4B92-AB41-3AA2B806F5BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceBattleEngine", "SpaceBattleEngine\SpaceBattleEngine.csproj", "{CBBF4B38-CDFB-4D8D-8206-25ECA97D60CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBBF4B38-CDFB-4D8D-8206-25ECA97D60CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBBF4B38-CDFB-4D8D-8206-25ECA97D60CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBBF4B38-CDFB-4D8D-8206-25ECA97D60CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBBF4B38-CDFB-4D8D-8206-25ECA97D60CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{092C6D2B-2332-4B92-AB41-3AA2B806F5BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{092C6D2B-2332-4B92-AB41-3AA2B806F5BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{092C6D2B-2332-4B92-AB41-3AA2B806F5BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{092C6D2B-2332-4B92-AB41-3AA2B806F5BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9925A1F-19F3-4C10-A357-53A5F6AC9DDC}
+	EndGlobalSection
+EndGlobal
